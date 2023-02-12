@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 4</title>
+    </head>
+
+    <body>
+        <script>
+            // Задача 4. Дано довжину у сантиметрах. Визначати скільки це метрів і кілометрів.
+            let lengthInCenti = parseFloat(prompt(`Введіть довжину в сантиметрах`, `0`));
+            // Знаходимо результат виразів
+            // В метрах 
+            const LENGTH_METRES = 100
+            // В сантиметрах
+            const LENGTH_KILO = 10000
+
+            // Робимо розрахунок
+            // Довжина в метрах
+            const resultMeters = lengthInCenti / LENGTH_METRES;
+            // Довжина в сантиметрах
+            const resultKilo = lengthInCenti / LENGTH_KILO;
+        </script>
+        <main class="task5">
+            <div class="task5__container">
+                <div class="tast5__head-block block-head">
+                    <h2 class="block-head__headline">Дано довжину у сантиметрах. Визначати скільки це метрів і кілометрів.
+                    </h2>
+                </div>
+                <table class="tast5__table table">
+                    <script>
+                        // Виводимо результат 
+                        document.write(`
+                        <tr class="table__line">
+                        <td class="table__item">Довжина в матрах</td>
+                        <td class="table__item">${resultMeters}</td>
+                        </tr>
+                        <tr class="table__line">
+                        <td class="table__item">Довжина в кілометрах</td>
+                        <td class="table__item">${resultKilo1}</td>
+                        </tr>`)
+                    </script>
+                </table>
+            </div>
+        </main>
+    </body>
+
+</html>

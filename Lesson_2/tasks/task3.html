@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 2</title>
+    </head>
+
+    <body>
+        <script>
+            // Задача 2. Дано рік народження (дата: 1 січня) та поточний рік. Знайти кількість років.
+            let userBirth = parseInt(prompt('Введіть ваш вік', '0'));
+            // Визначаемо поточу дату і рік 
+            let dataToday = new Date();
+            let thisYear = dataToday.getFullYear();
+            // Вираховуємо вік користувача
+            let userAge = thisYear - userBirth;
+        </script>
+        <main class="task3">
+            <div class="task3__container">
+                <div class="tast3__head-block block-head">
+                    <h2 class="block-head__headline">Задача 2. Дано рік народження (дата: 1 січня) та поточний рік. Знайти кількість років</h2>
+                </div>
+                <table class="tast3__table table">
+                    <script>
+                        // Виводимо результат 
+                        document.write(`
+                        <tr class="table__line">
+                        <td class="table__item">Ваш вік</td>
+                        <td class="table__item">${userAge}</td>
+                        </tr>`)
+                    </script>
+                </table>
+            </div>
+        </main>
+    </body>
+
+</html>

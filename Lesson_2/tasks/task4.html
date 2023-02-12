@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 3</title>
+    </head>
+
+    <body>
+        <script>
+            // Задача 3. Дано вартість одиниці товару і кількість. Знайти загальну вартість та ПДВ (5% від загальної вартості).
+            let productCost = parseFloat(prompt(`Введіть кількість товару`, `0`));
+            let productQuantity = parseFloat(prompt(`Введіть кількість товару`, `0`));
+
+            const PROC_TAX = 0.05;
+
+            // Робимо обчислення 
+            const productNotTax = productCost * productQuantity;
+
+            const productWithTax = (productNotTax * PROC_TAX) / 100;
+
+            const productAllResult = productNotTax + productWithTax;
+
+        </script>
+        <main class="task4">
+            <div class="task4__container">
+                <div class="tast4__head-block block-head">
+                    <h2 class="block-head__headline">Задача 3. Дано вартість одиниці товару і кількість. Знайти загальну вартість та ПДВ (5% від загальної вартості).
+                    </h2>
+                </div>
+                <table class="tast4__table table">
+                    <script>
+                        // Виводимо результат 
+                        document.write(`
+                        <tr class="table__line">
+                        <td class="table__item">Вартість товару без ПДВ</td>
+                        <td class="table__item">${productNotVat}</td>
+                        </tr>
+                        <tr class="table__line">
+                        <td class="table__item">Вартість ПДВ</td>
+                        <td class="table__item">${productProcVat}</td>
+                        </tr>
+                        <tr class="table__line">
+                        <td class="table__item">Загальна вартість товару</td>
+                        <td class="table__item">${productAllResult}</td>
+                        </tr>`)
+                    </script>
+                </table>
+            </div>
+        </main>
+    </body>
+
+</html>

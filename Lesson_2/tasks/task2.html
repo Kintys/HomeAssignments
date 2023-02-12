@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 1</title>
+
+    </head>
+
+    <body>
+        <script>
+            // Задача 1. Знайти суму, добуток та частку двох дійсних чисел. Результат вивести у формі таблиці
+            let firstNumberCalc = parseFloat(prompt('Введіть перше число', '0'));
+            let secondNumberCalc = parseFloat(prompt('Введіть друге число', '0'));
+            // Робимо обчислення
+            const resultAddition = firstNumberCalc + secondNumberCalc;
+
+            const resultSubtraction = firstNumberCalc - secondNumberCalc;
+
+            const resultMultiplication = firstNumberCalc * secondNumberCalc;
+
+            const resultDivision = firstNumberCalc / secondNumberCalc;
+
+            const resultDivisionWithRemainder = firstNumberCalc % secondNumberCalc;
+        </script>
+        <main class="task2">
+            <div class="task2__container">
+                <div class="tast2__head-block block-head">
+                    <h2 class="block-head__headline">Задача 1. Знайти суму, добуток та частку двох дійсних чисел. Результат вивести у формі таблиці</h2>
+                </div>
+                <table class="tast2__table table">
+                    <script>
+                        // Виводимо результат 
+                        document.write(` 
+                        <tr class="table__line">
+                        <td class="table__item">Додавання</td>
+                        <td class="table__item">${resultAddition}</td>
+                        </tr>`)
+                    </script>
+                    <script>
+                        // Виводимо результат 
+                        document.write(`
+                        <tr class="table__line">
+                            <td class="table__item">Віднімання</td>
+                            <td class="table__item">${resultSubtraction}</td>
+                        </tr> 
+                        `)
+                    </script>
+                    <script>
+                        // Виводимо результат 
+                        document.write(`
+                            <tr class="table__line">
+                            <td class="table__item">Множення</td>
+                            <td class="table__item">${resultMultiplication}</td>
+                            </tr>
+                        `)
+                    </script>
+                    <script>
+                        // Виводимо результат 
+                        document.write(`
+                        <tr class="table__line">
+                        <td class="table__item">Ділення</td>
+                        <td class="table__item">${resultDivision}</td>
+                        </tr>`)
+                    </script>
+                    <script>
+                        document.write(`
+                        <tr class="table__line">
+                        <td class="table__item">Ділення із залишком</td>
+                        <td class="table__item">${resultDivisionWithRemainder}</td>
+                        </tr>`)
+                    </script>
+                </table>
+            </div>
+        </main>
+    </body>
+
+</html>

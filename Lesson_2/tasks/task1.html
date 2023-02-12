@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 0</title>
+
+    </head>
+
+    <body>
+        <script>
+            // Задача 0. Обчислити значення виразів
+            let a = parseFloat(prompt('Введіть число "a"', '0'));
+            let b = parseFloat(prompt('Введіть число "b"', '0'));
+            let c = parseFloat(prompt('Введіть число "c"', '0'));
+        </script>
+        <main class="task1">
+            <div class="task1__container">
+                <div class="tast1__head-block block-head">
+                    <h2 class="block-head__headline">Обчислити значення виразів</h2>
+                    <div class="block__image">
+                        <img src="../img/task1.png" alt="task">
+                    </div>
+                </div>
+                <table class="tast1__table table">
+                    <script>
+                        // S1
+                        // Додавання 
+                        const S1 = a + 12 + b;
+                        // Виводимо результат 
+                        document.write(` 
+                        <tr class="table__line">
+                        <td class="table__item">S1 = ${a} + 12 + ${b}</td>
+                        <td class="table__item">${S1}</td>
+                        </tr>`)
+                    </script>
+
+                    <script>
+                        // S2 
+                        // Знахдимо крадратний корінь числа 
+                        const S2 = Math.sqrt((a + b) / (a * 2));
+                        // Виводимо результат 
+                        document.write(`
+                        <tr class="table__line">
+                            <td class="table__item">S2 = коринь с числа ((${a} + ${b}) / (${a} * 2))</td>
+                            <td class="table__item">${S2}</td>
+                        </tr> 
+                        `)
+                    </script>
+                    <script>
+                        // S3
+                        // Знаходимо кубічний корінь
+                        const S3 = Math.cbrt((a + b) * c);
+                        // Виводимо результат 
+                        document.write(`
+                            <tr class="table__line">
+                            <td class="table__item"> S3 кубічний корінь = (${a} + ${b}) * ${c} </td>
+                            <td class="table__item">${S3}</td>
+                            </tr>
+                        `)
+                    </script>
+                    <script>
+                        // S4
+                        // Знаходимо синус 
+                        const S4 = Math.sin(a / -b);
+                        // Виводимо результат 
+                        document.write(`
+                        <tr class="table__line">
+                        <td class="table__item">S4 синус = a / -${b}</td>
+                        <td class="table__item">${S4}</td>
+                        </tr>`)
+                    </script>
+                </table>
+                <!-- <footer class="task1__footer footer">
+                    <a class="footer__back" href="../index.html">Головна</a>
+                </footer> -->
+            </div>
+        </main>
+    </body>
+
+</html>

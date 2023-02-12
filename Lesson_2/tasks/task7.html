@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 6</title>
+    </head>
+
+    <body>
+        <script>
+            // Задача 6. З клавіатури вводяться вартість товару та кількість одиниць 3 товарів. Обчислити вартість кожного товару окремо та загальну вартість. Вивести чек (як у супермаркеті) використовуючи елементи розмітки.
+            let appleCost = parseFloat(prompt(`Введіть вартість яблук`, `48.67`));
+            let orangeCost = parseFloat(prompt(`Введіть вартість апельсинів`, `35.59`));
+            let bananaCost = parseFloat(prompt(`Введіть вартість бананів`, `54.73`));
+
+            let appleQuantity = parseFloat(prompt(`Введіть кількість яблук`, `0.5`));
+            let orangeQuantity = parseFloat(prompt(`Введіть кількість апельсинів`, `2`));
+            let bananaQuantity = parseFloat(prompt(`Введіть кількість бананів`, `1`));
+            // Знаходимо результат виразів
+            const appleOnePrice = appleCost * appleQuantity;
+            const orangeOnePrice = orangeCost * orangeQuantity;
+            const bananaOnePrice = bananaCost * bananaQuantity;
+
+            const resultAllCalcQuantity = appleOnePrice + orangeOnePrice + bananaOnePrice;
+        </script>
+        <main class="task7">
+            <div class="task7__container">
+                <div class="tast7__head-block block-head">
+                    <h2 class="block-head__headline"> Дано кількість секунд, що пройшла від початку доби. Визначити скільки це годин і хвилин.
+                    </h2>
+                </div>
+                <table class="tast4__table table">
+                    <script>
+                        // Виводимо результат 
+                        document.write(`
+                        <tr class="table__line">
+                        <td class="table__item">Checkout</td>
+                        <td class="table__item"></td>
+                        <td class="table__item">Вартість яблук</td>
+                        <td class="table__item">${(appleOnePrice).toFixed(2)}</td>
+                        <td class="table__item">Вартість апельсинів</td>
+                        <td class="table__item">${(orangeOnePrice).toFixed(2)}</td>
+                        <td class="table__item">Вартість бананів</td>
+                        <td class="table__item">${(bananaOnePrice).toFixed(2)}</td>
+                        <td class="table__item">Загальна вартість фруктів</td>
+                        <td class="table__item">${(resultAllCalcQuantity).toFixed(2)}</td>
+                        </tr>`)
+                    </script>
+                </table>
+            </div>
+        </main>
+    </body>
+
+</html>
