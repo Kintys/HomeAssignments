@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 7</title>
+    </head>
+
+    <body>
+        <script>
+            // Задача 6. З клавіатури вводиться номер місяця. Вивести до якої пори він відноситься
+            const userMothNumber = parseInt(prompt(`Введіть номер місяця`))
+
+            if (userMothNumber === 12 || userMothNumber <= 2)
+                document.write(`
+                <main class="task1">
+                    <div class="task1__container">
+                        <p class="task1__info info">Ура!! Зараз зима ідемо грати в сніжки</p>
+                    </div>
+                </main>
+                `);
+            else if (userMothNumber <= 5)
+                document.write(`
+                <main class="task1">
+                    <div class="task1__container">
+                        <p class="task1__info info">Ура!! Зараз весна ідемо на гріль</p>
+                    </div>
+                </main>
+                `);
+            else if (userMothNumber <= 8)
+                document.write(`
+                <main class="task1">
+                    <div class="task1__container">
+                        <p class="task1__info info">Ура!! Зараз літо ідемо на річку</p>
+                    </div>
+                </main>
+                `);
+            else if (userMothNumber <= 11)
+                document.write(`
+                <main class="task1">
+                    <div class="task1__container">
+                        <p class="task1__info info">Ура!! Зараз осінь ходимо до Зоопарку </p>
+                    </div>
+                </main>
+                `);
+            else
+                document.write(`
+                <main class="task1">
+                    <div class="task1__container">
+                        <p class="task1__info info">Введіть коректний номер</p>
+                    </div>
+                </main>
+                `);
+        </script>
+
+    </body>
+
+</html>
+
+<!-- if (userMothNumber <= 0 || userMothNumber => 12)
+document.write(`
+<main class="task1">
+    <div class="task1__container">
+        <p class="task1__info info">Невірний номер місяця</p>
+    </div>
+</main>
+`); -->

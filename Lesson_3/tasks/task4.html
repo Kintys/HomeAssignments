@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 4</title>
+    </head>
+
+    <body>
+        <script>
+            // Задача 4. З клавіатури вводиться вік людини. Вивести на екран ким він є (дитиною у садочку, школярем, студентом, працівником, пенсіонером).
+            const userAge = parseInt(prompt(`Введіть ваш вік`))
+
+
+            if (userAge == 1)
+                document.write(`
+                <main class="task1">
+                    <div class="task1__container">
+                        <p class="task1__info info">Ви ще немовля</p>
+                    </div>
+                </main>
+                `);
+            else if (userAge <= 6)
+                document.write(`
+                <main class="task1">
+                    <div class="task1__container">
+                        <p class="task1__info info">Ви є дитиною дошкільного віку</p>
+                    </div>
+                </main>
+                `);
+            else if (userAge <= 17)
+                document.write(`
+                <main class="task1">
+                    <div class="task1__container">
+                        <p class="task1__info info">Ви є школярем</p>
+                    </div>
+                </main>
+                `);
+            else if (userAge <= 23)
+                document.write(`
+                <main class="task1">
+                    <div class="task1__container">
+                        <p class="task1__info info">Ви є студентом</p>
+                    </div>
+                </main>
+                `);
+            else if (userAge <= 65)
+                document.write(`
+                <main class="task1">
+                    <div class="task1__container">
+                        <p class="task1__info info">Ви є працівником</p>
+                    </div>
+                </main>
+                `);
+            else if (userAge <= 100)
+                document.write(`
+                <main class="task1">
+                    <div class="task1__container">
+                        <p class="task1__info info">Ви є пенсіонер</p>
+                    </div>
+                </main>
+                `);
+            else if (userAge > 100)
+                document.write(`
+                <main class="task1">
+                    <div class="task1__container">
+                        <p class="task1__info info">Дай вам бог здоров'я</p>
+                    </div>
+                </main>
+                `);
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 2</title>
+
+    </head>
+
+    <body>
+        <script>
+            // Задача 2. 
+            // З клавіатури вводиться ціна товару і кількість грошей. Якщо грошей не вистачає то відмовляємо у покупці, інакше, якщо ще залишаються гроші, то пропонуємо купити лотерею за 4 грн.
+            const productCostValue = parseFloat(prompt(`Введіть ціну товару`));
+            const moneyQuantity = parseFloat(prompt(`Введіть кількість грошей`));
+            const lotteryTicket = 4;
+            // Знаходимо залишок
+            const leftover = moneyQuantity - productCostValue
+            // Якщо moneyQuantity дорівнюе або більше за productCostValue 
+            if (moneyQuantity >= productCostValue) {
+                // Дякуемо за покупку 
+                document.write(`
+                    <main class="task1">
+                        <div class="task1__container">
+                            <p class="task1__info info">Дякуемо за покупку</p>
+                        </div>
+                    </main>
+                        `)
+                // Якщо change дорівнюе або більше за lotteryTicket
+                if (leftover >= lotteryTicket)
+                    // Пропонуемо лотерею 
+                    document.write(`
+                    <main class="task1">
+                        <div class="task1__container">
+                            <p class="task1__info info">Можливо бажаєте купити лотерейний білет за 4 грн?</p>
+                        </div>
+                    </main>
+                        `)
+            }
+            else
+                // Якщо все не вірно
+                document.write(`1
+                    <main class="task1">
+                        <div class="task1__container">
+                            <p  class="task1__info info">Вибачте але у вас недостатньо грошей для ціеї покупки </p>
+                        </div>
+                    </main>
+                `)
+        </script>
+    </body>
+
+</html>

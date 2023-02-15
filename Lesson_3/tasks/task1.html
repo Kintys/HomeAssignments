@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 1</title>
+
+    </head>
+
+    <body>
+        <script>
+            // Задача 1. 
+            // З клавіатури вводяться імена двох дітей та кількість у них цукерок. Вивести не екран ім’я тієї дитини, у якої кількість цукерок є більшою, або вивести, що кількість однакова.
+            const firstNameChild = prompt(`Введіть ім’я першої дитини`)
+            const sweetsValueFirstChild = prompt(`Введіть кількість цукерок першої дитини`)
+            const secondNameChild = prompt(`Введіть ім’я другої дитини`)
+            const sweetsValueSecondChild = prompt(`Введіть кількість цукерок другої дитини`)
+            // Якщо sweetsValueFirstChild більше sweetsValueSecondChild 
+            if (sweetsValueFirstChild > sweetsValueSecondChild)
+                document.write(`
+                 <main class="task1">
+             <div class="task1__container">
+                 <p class="task1__info info">У ${firstNameChild} більше цукерок</p>
+             </div>
+         </main>
+         `)
+            // Якщо sweetsValueFirstChild меньше sweetsValueSecondChild 
+            if (sweetsValueFirstChild < sweetsValueSecondChild)
+                document.write(`
+                 <main class="task1">
+             <div class="task1__container">
+                 <p class="task1__info info">У ${secondNameChild} більше цукерок</p>
+             </div>
+         </main>
+         `)
+            // Якщо обидва варіанти невірні 
+            else
+                document.write(`
+                 <main class="task1">
+             <div class="task1__container">
+                 <p class="task1__info info">У ${firstNameChild} та ${secondNameChild} рівна кількість </p>
+             </div>
+         </main>
+         `)
+        </script>
+    </body>
+
+</html>

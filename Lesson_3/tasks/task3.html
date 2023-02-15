@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 3</title>
+    </head>
+
+    <body>
+        <script>
+            let userNumber = parseInt(prompt('Введіть 1 число.Увага у вас є 2 спроби '))
+            const minNumb = 1
+            const maxNumb = 5
+            let randomNumber = minNumb + Math.floor(Math.random() * (maxNumb - minNumb + 1));
+
+            if (randomNumber === userNumber)
+                document.write(`
+                    <main class="task1">
+                        <div class="task1__container">
+                            <p  class="task1__info info"> Вітаю ви вгадали число ${randomNumber} </p>
+                        </div>
+                    </main>
+                `)
+            else {
+                let userNumber = parseInt(prompt('Введіть 2 число.Увага у вас є 2 спроби '))
+                if (randomNumber === userNumber)
+                    document.write(`
+                    <main class="task1">
+                        <div class="task1__container">
+                            <p  class="task1__info info"> Вітаю ви вгадали число ${randomNumber} </p>
+                        </div>
+                    </main>
+                `)
+                else
+                    document.write(`
+                    <main class="task1">
+                        <div class="task1__container">
+                            <p  class="task1__info info">Вибачте але ви не вгадали жодне число</p>
+                        </div>
+                    </main>
+                `)
+            }
+
+        </script>
+    </body>
+
+</html>
