@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 8</title>
+    </head>
+
+    <body>
+        <script>
+            // Задача 8. Користувач загадує число. За 3 спроби комп’ютер намагається вгадати число користувача (використати confirm).
+            const messageTask = alert(`Задача 8. Користувач загадує число. За 3 спроби комп’ютер намагається вгадати число користувача (використати confirm)`)
+            // Число користувача
+            const userGuessedNumber = parseInt(prompt(`Загадайте число від 1 до 100`))
+            // Кількість спроб
+            let quantityAttempts = 3
+            // Повідомлення
+            let messenger
+            // Цикл спроб 
+            for (let r = 0; r < 3; r++) {
+
+                const randomNumb = 1 + Math.floor(Math.random() * 100) + 1
+                // Умова перевірки
+                if (userGuessedNumber === randomNumb) {
+                    messenger = confirm(`Загадане число ${userGuessedNumber}`)
+                    break
+                } else {
+                    messenger = confirm(`Загадане число не вгадано залишилось  ${quantityAttempts--} спроби`)
+                    // Умова, якщо число невгадано за 3 спроби 
+                    if (quantityAttempts === 0)
+                        messenger = confirm(`На жаль загадане число негадано!`)
+                }
+            }
+
+        </script>
+
+    </body>
+
+</html>

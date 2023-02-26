@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 7</title>
+    </head>
+
+    <body>
+        <script>
+            // Задача 7. Вивести на екран N абзаців (N вводиться користувачем) за зразком:
+            const messageTask = alert(`Задача 7. Вивести на екран N абзаців (N вводиться користувачем) за зразком:`)
+            // Крок 0 Запитуємо користувачя ппро кількість
+            const userParagrafQuantity = parseInt(prompt(`Введіть кількість параграфів`))
+            // Крок  = 1 Цикл додаваня заголовків
+            for (let i = 1; i <= userParagrafQuantity; i++) {
+                document.write(`<h2>Заголовок</h2>`)
+                // Крок = 2 Цикл додаваня параграфів
+                for (let r = 1; r <= userParagrafQuantity; r++) {
+                    document.write(`<p>розділ ${i}, параграф ${r} </p>`)
+                    // Крок = 3 Перериваємо цикл, виводимо результат
+                    if (r === i) break
+                }
+            }
+
+        </script>
+
+    </body>
+
+</html>

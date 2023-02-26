@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 11</title>
+        <script>
+            //Задача 11. Знайти суму 5 непарних чисел, що знаходяться між заданими користувачем числами.
+            const messageTask = alert(`Задача 11. Знайти суму 5 непарних чисел, що знаходяться між заданими користувачем числами.`)
+            // Запитуємо користувача
+            const minNumber = parseInt(prompt(`Введіть перше число діапазону`))
+            const maxNumber = parseInt(prompt(`Введіть друге число діапазону`))
+            // Знаходимо максимальне і мінімальне число
+            if (minNumber > maxNumber) {
+                const temp = minNumber
+                minNumber = maxNumber
+                maxNumber = temp
+            }
+            // Лічильник
+            let counter = 0
+            // Сума непарних
+            let oddSum = 0
+            // Цикл додавання непарних  без урахування початкових значень і лімітом 5 непарних
+            for (i = minNumber + 1; i < maxNumber && counter < 5; i++) {
+                if (i % 2 !== 0)
+                    oddSum += i
+                counter++
+            }
+            // Цикл додавання непарних з урахуванням початкових значень і лімітом 5 непарних
+            //  for (i = min ; i <= max  && counter < 5; i++) {
+            //     if (i % 2 !== 0)
+            //         oddSum += i
+            // }
+            document.write(oddSum)
+        </script>
+    </head>
+
+    <body>
+
+    </body>
+
+</html>

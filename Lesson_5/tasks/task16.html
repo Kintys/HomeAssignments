@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 16</title>
+        <script>
+            // Задача 16. Користувач поступово вводить прибуток магазину за кожен день протягом N тижнів. Знайти загальну величину прибутку та вивести величину прибутку протягом кожного окремого тижня.
+            const messageTask = alert(`Задача 16. Користувач поступово вводить прибуток магазину за кожен день протягом N тижнів. Знайти загальну величину прибутку та вивести величину прибутку протягом кожного окремого тижня.`)
+            // 0 Запитуємо користувача про кількість тижнів
+            const weakQuantity = parseInt(prompt(`Введіть кількість тижів`))
+            // Кількість днів 
+            const dayQuantity = 7
+            // Загальна сума
+            let totalSum = 0
+            // Загальна сума протягом тижня 
+            let resultProfitWeak = 0
+            // Цикл тижнів
+            for (let w = 1; w <= weakQuantity; w++) {
+                // Цикл днів
+                next: for (let d = 1; d <= dayQuantity; d++) {
+                    const profit = parseFloat(prompt(`Введіть прибуток ${d} день ${w} тижня `))
+                    // модифікація задачі
+                    if (!isFinite(profit)) {
+                        const contin = confirm(`Ви хочете пропустити день?`)
+                        // Якщо тру, пропускаємо день 
+                        if (contin == true)
+                            continue next
+                        // Якщо ні, вертаемося на цей день 
+                        else
+                            d--
+                    }
+                    // Результат обчислення 
+                    resultProfitWeak += profit
+                    totalSum += profit
+                }
+                // Виводимо результат кількості тижнів 
+                document.write(`Сума прибутку за ${w} тиждень ${resultProfitWeak.toFixed(2)} грн<br>`)
+            }
+            // Виводимо результат загальної суми
+            document.write(`Загальна сумма ${totalSum.toFixed(2)} грн`)
+        </script>
+    </head>
+
+    <body>
+    </body>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 2</title>
+
+    </head>
+
+    <body>
+        <script>
+            // Задача 2. 
+            //Створити 10 елементів для введення цін продуктів
+            const messageTask = alert(`Створити 10 елементів для введення цін продуктів`)
+            // Крок 0 
+            // Вводимо значення
+            let = minProductQuantity = 1
+            let = maxProductQuantity = 10
+            // Крок 1
+            // Створюемо умову
+            while (minProductQuantity <= maxProductQuantity) {
+                // Виводимо результат, додаемо ітерацію до нумерації продукту 
+                document.write(`  <div class="block__table">
+                                    <h3>Product № ${minProductQuantity}</h3>
+                                    <table class="table" height="35px">
+                                    </table>
+                                    </div>`)
+                // Повтореня циклу
+                minProductQuantity++
+            }
+        </script>
+    </body>
+
+</html>

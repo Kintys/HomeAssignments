@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 12</title>
+        <script>
+            // Задача 12. Ігровий автомат. Випадково вибираємо зображення у 3 позиціях. Вибір у кожній позиції вибирається як одне з чотирьох зображень. Вивести ці зображення і повідомити виграш користувача (три перших зображення 100 грн, три других – 200, три третіх – 500, три четвертих зображення – 1000грн). Використати цикли і switch (для вибору зображення за номером).
+            const messageTask = alert(`Задача 12. Ігровий автомат. Випадково вибираємо зображення у 3 позиціях. Вибір у кожній позиції вибирається як одне з чотирьох зображень. Вивести ці зображення і повідомити виграш користувача (три перших зображення 100 грн, три других – 200, три третіх – 500, три четвертих зображення – 1000грн). Використати цикли і switch (для вибору зображення за номером).`)
+            // 0 Крок водимо позначення
+            let result
+            let positionNumber = ``
+            let randomNumb
+            // 1 Цикл виведення картинок
+            for (let i = 0; i < 3; i++) {
+                randomNumb = Math.floor(Math.random() * 4) + 1
+                positionNumber += String(randomNumb)
+                document.write(`<img src="../img/img${randomNumb}.png" alt="#">`)
+            }
+            // 2 Перевіряємо результат 
+            switch (positionNumber) {
+                case "111": result = "Ви виграли 100грн"
+                    break;
+                case "222": result = "Ви виграли 200грн"
+                    break;
+                case "333": result = "Ви виграли 500грн"
+                    break;
+                case "444": result = "Ви виграли 1000грн"
+                    break;
+                default: result = "Ви програли"
+                    break;
+            }
+            document.write(`<br> ${result}`)
+        </script>
+    </head>
+
+    <body>
+    </body>
+
+</html>

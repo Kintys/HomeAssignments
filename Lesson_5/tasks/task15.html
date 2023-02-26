@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 15</title>
+        <script>
+            // Задача 15. Користувача поступово вводить показники температури протягом року. Знайти середню температуру.
+            const messageTask = alert(`Задача 15. Користувача поступово вводить показники температури протягом року. Знайти середню температуру.`)
+            const yearValue = 12
+            let counter = 0
+            let temp = 0
+            for (; counter < yearValue; counter++) {
+                const userTempValue = parseFloat(prompt(`Введіть температуру`))
+                if (!isFinite(userTempValue)) break
+                temp += userTempValue
+            }
+
+            const resultTemp = temp / counter
+            document.write(`Середня температура за рік ${resultTemp.toFixed(1)}`)
+        </script>
+    </head>
+
+    <body>
+    </body>

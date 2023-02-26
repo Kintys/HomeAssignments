@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 6
+        </title>
+    </head>
+
+    <body>
+        <script>
+            // Задача 6. Вивести 3 таблиці (по 3 рядки і 3 стовпці у кожній) за зразком
+            const messageTask = alert(`Задача 6. Вивести 3 таблиці (по 3 рядки і 3 стовпці у кожній) за зразком`)
+            // Крок 0 Створюемо зміну з результатом
+            let resultNumb = 0
+            // Крок 1 Цикл додавання таблиці
+            for (let table = 0; table < 3; table++) {
+                document.write(`<table border="3px"><tr>`)
+                // Крок 2 Цикл додавання ліній
+                for (let line = 0; line < 3; line++) {
+                    document.write(`<tr>`)
+                    // Крок 3 Цикл додавання номерів
+                    for (let i = 1; i <= 3; i++) {
+                        // Крок 4 номер клітинкі
+                        resultNumb++
+                        document.write(` <td>${resultNumb}</td>`)
+                    }
+                    document.write(`</tr>`)
+                }
+                document.write(`</tr></table>`)
+            }
+        </script>
+        <main class="task6">
+    </body>
+
+</html>

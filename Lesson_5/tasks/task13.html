@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 13</title>
+        <script>
+            // 13. Морський бій. Комп’ютер випадково розташовує одиночний корабель на полі розміром N*M. Маючи К снарядів користувач намагається потопити корабель. 
+            const messageTask = alert(`13. Морський бій. Комп’ютер випадково розташовує одиночний корабель на полі розміром N*M. Маючи К снарядів користувач намагається потопити корабель.`)
+            // 0 Вводимо дані, запитуємо користувача
+            const numberOfRows = parseInt(prompt(`Введіть кількість рядків`))
+            const numberOfColumn = parseInt(prompt(`Введіть кількість стовців`))
+            const numberOfShells = parseInt(prompt(`Введіть кількість снарядів`))
+            const randomShipRow = Math.floor(Math.random() * numberOfRows) + 1
+            const randomShipColumn = Math.floor(Math.random() * numberOfColumn) + 1
+            let count = 0
+            let result
+            do {
+                count++
+                userShotN = parseInt(prompt(`Постріл по квадрату N`))
+                userShotM = parseInt(prompt(`Постріл по квадрату M`))
+                if (userShotN !== randomShipRow && userShotM !== randomShipColumn)
+                    result = confirm(`Ви не влучили, спробуйте ще`)
+                else {
+                    result = confirm(`Ви виграли`)
+                    break;
+                }
+            }
+            while (count < numberOfShells)
+            document.write(`Кординати корабля ${randomShipRow}  ${randomShipColumn} <br>`)
+            document.write(`Кількість пострілів ${count}`)
+        </script>
+    </head>
+
+    <body>
+    </body>
+
+</html>
