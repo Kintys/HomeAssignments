@@ -17,9 +17,9 @@
             // Загальна сума
             let totalSum = 0
             // Загальна сума протягом тижня 
-            let resultProfitWeak = 0
             // Цикл тижнів
             for (let w = 1; w <= weakQuantity; w++) {
+                let resultProfitWeak = 0
                 // Цикл днів
                 next: for (let d = 1; d <= dayQuantity; d++) {
                     const profit = parseFloat(prompt(`Введіть прибуток ${d} день ${w} тижня `))
@@ -35,8 +35,8 @@
                     }
                     // Результат обчислення 
                     resultProfitWeak += profit
-                    totalSum += profit
                 }
+                totalSum += resultProfitWeak
                 // Виводимо результат кількості тижнів 
                 document.write(`Сума прибутку за ${w} тиждень ${resultProfitWeak.toFixed(2)} грн<br>`)
             }
