@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 4</title>
+    </head>
+
+    <body>
+        <script>
+            //  Задача 3. Створити окремі функції, які для 4 чисел знаходять:
+            const taskMassenge = alert(`Задача 3. Створити окремі функції, які для 4 чисел знаходять.`)
+            const numberFirst = parseInt(prompt(`Введіть перше число`))
+            const numberSecond = parseInt(prompt(`Введіть друге число`))
+            const numberThird = parseInt(prompt(`Введіть трете число`))
+            const numberFourth = parseInt(prompt(`Введіть четверте число`))
+
+            function getAdditionNumb(n1, n2, n3, n4) {
+                return (n1 + n2 + n3 + n4)
+            }
+            function getMultiplicationNumb(n1, n2, n3, n4) {
+                return (n1 * n2 * n3 * n4)
+            }
+            function getArithmeticMeanNumb(n1, n2, n3, n4) {
+                return (n1 + n2 + n3 + n4) / 4
+            }
+            function getminNumb(n1, n2, n3, n4) {
+                let min = Infinity
+                if (n1 > 0 && n1 < min) min = n1
+                if (n2 > 0 && n2 < min) min = n2
+                if (n3 > 0 && n3 < min) min = n3
+                if (n4 > 0 && n4 < min) min = n4
+                return min
+            }
+            const varicatNumber = getVaricationNumber(numberFirst, numberSecond, numberThird, numberFourth)
+            const showCalcAddNumb = getAdditionNumb(numberFirst, numberSecond, numberThird, numberFourth)
+            const showMultipNumb = getMultiplicationNumb(numberFirst, numberSecond, numberThird, numberFourth)
+            const showArithmeticMeanNum = getArithmeticMeanNumb(numberFirst, numberSecond, numberThird, numberFourth)
+            const showMinNumb = getminNumb(numberFirst, numberSecond, numberThird, numberFourth)
+            document.write(`Сума додавання = ${showCalcAddNumb}<br>`)
+            document.write(`Сума добутку = ${showMultipNumb}<br>`)
+            document.write(`Сума середнє арифметичне ${showArithmeticMeanNum}<br>`)
+            document.write(`Мінімальне число ${showMinNumb}<br>`)
+        </script>
+    </body>
+
+</html>

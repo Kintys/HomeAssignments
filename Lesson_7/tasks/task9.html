@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 9</title>
+        <script>
+            // Задача 8. Створити функцію, яка виводить банер (у функцію передаються: зображення, заголовок та посилання, куди переходимо при кліку на зображення (тег img повине знаходитись у середині тега a: <a> <img src=”шлях”> </a>
+            const taskMassenge = alert(` Задача 8. Створити функцію, яка виводить банер (у функцію передаються: зображення, заголовок та посилання, куди переходимо при кліку на зображення (тег img повине знаходитись у середині тега a: <a> <img src=”шлях”> </a>`)
+
+            const userImage = prompt(`Введіть шлях до зображення(посилання)`, `../img/01.jpg`)
+            const userHeadline = prompt(`Введіть заголовок`, `Відпочинок на чорному морі`)
+            const userLink = prompt(`Введіть посилання`, `https://vidpochivai.com.ua/uk/blacksea-ua`)
+
+            function getBannerValue(src = showBannerValue, headline, link) {
+                return `<a href="${link}"><img src="${src}" alt="Image" width="450px" height="300px"><br>${headline}</a>`
+            }
+            const showBannerValue = getBannerValue(userImage, userHeadline, userLink)
+            document.write(showBannerValue)
+        </script>
+    </head>
+
+    <body>
+
+    </body>
+
+</html>

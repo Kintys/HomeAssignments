@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 5</title>
+    </head>
+
+    <body>
+        <script>
+            // Задача 4. Створити функцію, яка для 3 заданих чисел знаходить одночасно декілька результатів: кількість парних, кількість додатних, кількість більших за 100
+            const taskMassenge = alert(`Задача 4. Створити функцію, яка для 3 заданих чисел знаходить одночасно декілька результатів: кількість парних, кількість додатних, кількість більших за 100`)
+
+            const firstNumber = parseInt(prompt(`Введіть 1 число`))
+            const secondNumber = parseInt(prompt(`Введіть 2 число`))
+            const thirdNumber = parseInt(prompt(`Введіть 3 число`))
+            function getCalcNumber() {
+                let result,
+                    evenQuantity = 0,
+                    addedQuantity = 0,
+                    maxHundredQuantity = 0
+                for (let i = 0; i < arguments.length; i++) {
+                    if (arguments[i] % 2 === 0) evenQuantity += 1
+                    if (arguments[i] > 0) evenQuantity += 1
+                    if (arguments[i] > 100) evenQuantity += 1
+                }
+                return result = `
+                Кількість парних ${evenQuantity}<br>
+                Кількість доданих ${addedQuantity}<br>
+                Кількість більше за сто  ${maxHundredQuantity}<br>`
+            }
+            const calcResult = getCalcNumber(firstNumber, secondNumber, thirdNumber)
+            document.write(calcResult)
+        </script>
+    </body>
+
+</html>

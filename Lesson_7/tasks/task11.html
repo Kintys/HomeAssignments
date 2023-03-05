@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 11</title>
+        <script>
+            // Задача 10. Дано покази температур (довільна кількість). Розробити функцію, яка дозволить знайти середнє значення для додатних показів температури.
+            const tempValue = [14, 14, 56, 42, 67, 42, 34, 56, 78, 42, 78, 57, 08, 07, 35, 53, 2342]
+            function getArithmeticMeanNumb(array) {
+                let resultCalc = 0
+                for (let i = 0; i < array.length; i++) {
+                    resultCalc += array[i] / array.length;
+                }
+                return resultCalc
+            }
+            let showCalcArithmeticMean = getArithmeticMeanNumb(tempValue)
+            document.write(`Середня значення всі перерахованих температур ${showCalcArithmeticMean.toFixed(2)}`)
+        </script>
+    </head>
+
+    <body>
