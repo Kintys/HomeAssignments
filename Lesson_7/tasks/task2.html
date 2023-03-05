@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 2</title>
+
+    </head>
+
+    <body>
+        <script>
+            // Задача 1. Створити функцію, яка за номером місяця повертає його назву.
+            const taskMassenge = alert(`Задача 1. Створити функцію, яка за номером місяця повертає його назву.`)
+
+            const numberMonth = parseInt(prompt(`Введіть номер місяця`))
+
+            function isMonth(Month) {
+                let resultMonth
+                switch (Month) {
+                    case 1: resultMonth = 'Січень'
+                        break;
+                    case 2: resultMonth = 'Лютий'
+                        break;
+                    case 3: resultMonth = 'Березень'
+                        break;
+                    case 4: resultMonth = 'Квітень'
+                        break;
+                    case 5: resultMonth = 'Травень'
+                        break;
+                    case 6: resultMonth = 'Червень'
+                        break;
+                    case 7: resultMonth = 'Липень'
+                        break;
+                    case 8: resultMonth = 'Серпень'
+                        break;
+                    case 9: resultMonth = 'Вересень'
+                        break;
+                    case 10: resultMonth = 'Жовтень'
+                        break;
+                    case 11: resultMonth = 'Листопад'
+                        break;
+                    case 12: resultMonth = 'Грудень'
+                        break;
+                    default: resultMonth = 'Error'
+                        break;
+                }
+                return resultMonth
+            }
+            const showMonth = isMonth(numberMonth)
+            document.write(showMonth)
+        </script>
+    </body>
+
+</html>

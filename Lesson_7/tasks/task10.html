@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 10</title>
+        <script>
+            //  Задача 9. Дано покази температур (довільна кількість). Розробити функцію, яка дозволить підрахувати кількість від’ємних показів температури.
+            const taskMassenge = alert(` Задача 9. Дано покази температур (довільна кількість). Розробити функцію, яка дозволить підрахувати кількість від’ємних показів температури.`)
+            const tempValue = [12, -31, 41, -54, 31, -54, -41, 43, -32, 13, -14, 41, 41, 54, -76, -45, -64]
+            function getNegativeNumber(arrey) {
+                let negativeNumber = 0
+                for (let i = 0; i < arrey.length; i++) {
+                    if (arrey[i] < 0) negativeNumber += 1;
+                }
+                return negativeNumber
+            }
+            const showNegativeNumber = getNegativeNumber(tempValue)
+            document.write(`Від'ємних покзників температури становить ${showNegativeNumber}`)
+        </script>
+    </head>
+
+
+    <body>
+
+    </body>
+
+</html>

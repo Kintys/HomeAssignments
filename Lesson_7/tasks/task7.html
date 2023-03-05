@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Завдання 7</title>
+    </head>
+
+    <body>
+        <script>
+            // Задача 6. Створити функцію, яка створює таблицю з вказаною кількістю рядків і стовпців (таблиця заповнюється заданим фіксованим повідомленням).
+            const taskMassenge = alert(`Задача 6. Створити функцію, яка створює таблицю з вказаною кількістю рядків і стовпців (таблиця заповнюється заданим фіксованим повідомленням).`)
+
+            const rowsQuantity = parseInt(prompt(`Введіть кількість рядків`))
+            const columnQuantity = parseInt(prompt(`Введіть кількість стовпців`))
+            function getTable(rows, colum,) {
+                const massangeUser = 'Hello!'
+                let addRows = " "
+                for (i = 0; i < rows; i++) {
+                    let addColums = " "
+                    for (j = 0; j < colum; j++) {
+                        addColums += `<td>${massangeUser}</td>`
+                    }
+                    addRows += `<tr>${addColums}</tr>`
+                }
+                return `<table border="2px">${addRows}</table>`
+            }
+            let showTable = getTable(rowsQuantity, columnQuantity)
+            document.write(showTable)
+        </script>
+    </body>
+
+</html>
