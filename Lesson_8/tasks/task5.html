@@ -15,7 +15,7 @@
             // двійок
             // кількість хороших оцінок(добре, відмінно);
             // кількість оцінок, які нижче середнього.
-            function getRandomScore(minV, maxV, quantityRound) {
+           function getRandomScore(minV, maxV, quantityRound) {
                 arr = []
                 for (let i = 0; i < quantityRound; i++) {
                     const random = minV + Math.floor(Math.random() * (maxV - minV + 1))
@@ -38,19 +38,27 @@
                 return `Кількість хороших оцінок = ${sumHieghtScore}<br>`
             }
             function getAvegarScore(scoreAvegar) {
+                let avegarScore = 0
+                for (let i = 0; i < scoreAvegar.length; i++) {
+                    avegarScore += scoreAvegar[i]
+                }
+                return Math.round(avegarScore / scoreAvegar.length)
+            }
+            function getQuantityAvegar(quantityAvengar, scoreAvegar) {
                 let sumAvegarScore = 0
                 for (let i = 0; i < scoreAvegar.length; i++) {
-                    if (scoreAvegar[i] >= 4 && scoreAvegar[i] <= 6) sumAvegarScore++
+                    if (scoreAvegar[i] < quantityAvengar) sumAvegarScore++
                 }
                 return `Кількість середніх оцінок  = ${sumAvegarScore}`
             }
             const scoreRandomNumber = getRandomScore(1, 12, 20)
             const showLowerScore = getQuantityLowScore(scoreRandomNumber)
             const showHiegthQuantityScore = getHeightScore(scoreRandomNumber)
-            const showAvegarScore = getAvegarScore(scoreRandomNumber)
+            const calcAvegarScore = getAvegarScore(scoreRandomNumber)
+            const showAvegarScoreQuantity = getQuantityAvegar(calcAvegarScore, scoreRandomNumber)
             document.write(showLowerScore)
             document.write(showHiegthQuantityScore)
-            document.write(showAvegarScore)
+            document.write(showAvegarScoreQuantity)
         </script>
     </body>
 
