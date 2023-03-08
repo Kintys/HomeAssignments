@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 8</title>
+    </head>
+
+    <body>
+        <script>
+            // Задача 8. Дано одновимірний масив, у якому зберігається певна виграшна сума(елементи заповнюються випадковим чином значеннями від - 500 до 500).Надаючи користувачу можливість вибирати номери елементів(поки він не відмовиться).Знаходити сумарний виграш.
+            function getRandomArray(minV, maxV, quantity) {
+                let newArray = []
+                for (let i = 0; i < quantity; i++) {
+                    let random = minV + Math.floor(Math.random() * (maxV - minV + 1))
+                    newArray.push(random)
+                }
+                return newArray
+            }
+            function getUserWin(winArray) {
+                let numberElements = 0
+                let resultWin = 0
+                for (let i = 0; ; i++) {
+                    const askUserElements = parseInt(prompt(`Введіть номер елемента від 1 до 10`))
+                    if (isNaN(askUserElements) || askUserElements > 10) break;
+                    resultWin += winArray[askUserElements - 1]
+                }
+                return `<br>Сумарний виграш становить ${resultWin}`
+            }
+            const randomWinArray = getRandomArray(-500, 500, 10)
+            const show = getUserWin(randomWinArray)
+            document.write(`Випадкові виграшні суми ${randomWinArray}<br>`)
+            document.write(show)
+        </script>
+    </body>
+
+</html>

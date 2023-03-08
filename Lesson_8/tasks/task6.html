@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 6
+        </title>
+    </head>
+
+    <body>
+        <script>
+            // Задача 6. Дано послідовність цін товарів та назв (у окремих масивах). Вивести на екран ті, які може собі дозволити користувач (кількість грошей задається).
+            const userMoney = parseFloat(prompt(`Скільки ви маєта грошей?`))
+            const priceProduct = [100, 54, 42, 21, 150, 124, 400, 300, 700, 55]
+            const titleProduct = ["juice", "cheese", "bread", "beer", "apple", "orange", "tomato", "pasta", "pineapple"]
+            function getPtoductBuy(productPrice, productTitle, moneyUser) {
+                let newListProduct = []
+                for (let i = 0; i < productPrice.length; i++) {
+                    if (moneyUser >= productPrice[i]) {
+                        newListProduct.push(productTitle[i])
+                    }
+                }
+                return `Продукти які покупець може соби дозволити купити <br> ${newListProduct}`
+            }
+            const showUserProductBay = getPtoductBuy(priceProduct, titleProduct, userMoney)
+            document.write(showUserProductBay)
+        </script>
+    </body>
+
+</html>

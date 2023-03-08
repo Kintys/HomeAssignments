@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 5</title>
+    </head>
+
+    <body>
+        <script>
+            // Задача 5. Дано послідовність оцінок учня. Підрахувати кількість.
+            // двійок
+            // кількість хороших оцінок(добре, відмінно);
+            // кількість оцінок, які нижче середнього.
+            function getRandomScore(minV, maxV, quantityRound) {
+                arr = []
+                for (let i = 0; i < quantityRound; i++) {
+                    const random = minV + Math.floor(Math.random() * (maxV - minV + 1))
+                    arr.push(random)
+                }
+                return arr
+            }
+            function getQuantityLowScore(scoreLow) {
+                let sumLowScore = 0
+                for (let i = 0; i < scoreLow.length; i++) {
+                    if (scoreLow[i] <= 3) sumLowScore++
+                }
+                return `<br>Кількість двійок = ${sumLowScore}<br>`
+            }
+            function getHeightScore(scoreHeigth) {
+                let sumHieghtScore = 0
+                for (let i = 0; i < scoreHeigth.length; i++) {
+                    if (scoreHeigth[i] >= 7) sumHieghtScore++
+                }
+                return `Кількість хороших оцінок = ${sumHieghtScore}<br>`
+            }
+            function getAvegarScore(scoreAvegar) {
+                let sumAvegarScore = 0
+                for (let i = 0; i < scoreAvegar.length; i++) {
+                    if (scoreAvegar[i] >= 4 && scoreAvegar[i] <= 6) sumAvegarScore++
+                }
+                return `Кількість середніх оцінок  = ${sumAvegarScore}`
+            }
+            const scoreRandomNumber = getRandomScore(1, 12, 20)
+            const showLowerScore = getQuantityLowScore(scoreRandomNumber)
+            const showHiegthQuantityScore = getHeightScore(scoreRandomNumber)
+            const showAvegarScore = getAvegarScore(scoreRandomNumber)
+            document.write(showLowerScore)
+            document.write(showHiegthQuantityScore)
+            document.write(showAvegarScore)
+        </script>
+    </body>
+
+</html>

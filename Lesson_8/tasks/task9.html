@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 9</title>
+        <script>
+            // Задача 9. Морський бій.Користувач вводить кількість клітинок одновимірного масиву та кількість одиночних кораблів.Комп’ютер довільно розміщує ці одиночні кораблі у масиві по один у клітинці(якщо у клітинці 0, то клітинка пуста, якщо 1 – то це означає, що там є корабель.Користувач вводить номер клітинки, куди стріляє.Гра продовжується до тих пір, поки не будуть потоплені усі кораблі.
+            const userNumberOfCells = parseInt(prompt('Введіть кількість клітинок'))
+            const userNumberShip = parseInt(prompt('Введыть кількість одиночних кораблів'))
+
+            function getGameArray(userCells) {
+                let newArray = []
+                for (let i = 0; i < userCells; i++) {
+                    newArray.push(0)
+                }
+                return newArray
+            }
+            function getRandomNumber(minV, maxV) {
+                return minV + Math.floor(Math.random() * (maxV - minV + 1))
+            }
+            function getRandomShipPlace(shipNumber, cellsNumber, newArray) {
+                for (let i = 0; i < shipNumber; i++) {
+                    const randomIndex = getRandomNumber(1, cellsNumber)
+                    if (newArray[randomIndex] === 1) {
+                        continue
+                        i--
+                    }
+                    newArray[randomIndex] = 1
+                }
+                return newArray
+            }
+            function getWinOrLosseResult(shipNumber, newArray) {
+                let result = 0
+                do {
+                    const userShot = parseInt(prompt("Ваш постріл"))
+                    if (newArray[userShot] === 1) {
+                        newArray[userShot] = 0
+                        result++
+                    }
+                    if (!isFinite(userShot)) {
+                        result
+                        break
+                    }
+                }
+                while (result < shipNumber)
+                return result
+            }
+            const gameArray = getGameArray(userNumberOfCells)
+            const placeRandomShip = getRandomShipPlace(userNumberShip, userNumberOfCells, gameArray)
+            const resultWinOrLosse = getWinOrLosseResult(userNumberShip, placeRandomShip)
+            document.write(`Кількість знищених кораблів становить ${resultWinOrLosse} з ${userNumberShip}`)
+        </script>
+    </head>
+
+    <body>
+
+    </body>
+
+</html>

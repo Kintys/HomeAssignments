@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 1</title>
+
+    </head>
+
+    <body>
+        <script>
+            //  Задача 1. Дано масив, який містить оцінки з К предметів. Знайти середній бал і з’ясувати до якої категорії він відноситься (відмінник, двійочник (має хоча би одну двійку), хорошист (оцінки добре і відмінно), трійочник(є хоча би одна трійка)).
+            const userNumber = parseInt(prompt(`Введіть кілкількість предметів`))
+            // Функція додавання оцінек до масиву
+            function getArrayItem(arrayQuantity = 0) {
+                let arr = []
+                for (let i = 0; i < arrayQuantity; i++) {
+                    const indexArray = parseInt(prompt(`Введіть оцінку ${i} предмету від 1-12   `))
+                    arr.push(indexArray)
+                }
+                return arr
+            }
+            const arrayMain = getArrayItem(userNumber)
+            // Фукція знаходення середньої оцінки 
+            function getArithmeticMeanNumb(array) {
+                let result = 0
+                for (let i = 0; i < array.length; i++) {
+                    result += array[i] / array.length
+                }
+                return Math.round(result)
+            }
+            // Фукція надання категорії учня
+            function isCategoryOfStudents(category) {
+                let lowScore = 0,
+                    averageScore = 0,
+                    highScore = 0
+
+                for (let i = 0; i < category.length; i++) {
+                    if (category[i] <= 3) lowScore = 2
+                    if (category[i] <= 6) averageScore = 3
+                    if (category[i] <= 12) highScore = 5
+                }
+                let studentCategory = " "
+                if (lowScore === 2) studentCategory = "двійочник"
+                else if (averageScore === 3) studentCategory = "трійочник"
+                else studentCategory = "хорошист/відмінник"
+                return studentCategory
+            }
+            const arrayArithmeticMeanNumb = getArithmeticMeanNumb(arrayMain)
+            document.write(`Середній бал за всі предмети становть - ${arrayArithmeticMeanNumb}<br>`)
+
+            const showCategoryStudent = isCategoryOfStudents(arrayMain)
+            document.write(`Категорія учня - ${showCategoryStudent}`)
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 7</title>
+    </head>
+
+    <body>
+        <script>
+            // Задача 7. Дано послідовність платіжок протягом року.Знайти сумарну кількість грошей за:
+            // за весь рік;
+            // у першій половині року;
+            // у другій половині року;
+            // за літо;
+            // за ІІ квартал;
+            // за парні місяці(з парними номерами);
+            // за місяці, які є початковими у сезоні(весна, літо, осінь, зима).
+
+
+            // Функція рандомного додавання чилес в масив 
+            function getRandomPaymant(minV, maxV, quantity) {
+                let newArray = []
+                for (let i = 0; i < quantity; i++) {
+                    let random = minV + Math.floor(Math.random() * (maxV - minV + 1))
+                    newArray.push(random)
+                }
+                return newArray
+            }
+            // Функція  підрахунку свіх платежів за рік
+            function getResultPaymantAllYear(paymantYear) {
+                let resultYear = 0
+                for (let i = 0; i < paymantYear.length; i++) {
+                    resultYear += paymantYear[i]
+                }
+                return `<br> Загальна сума платежів за весь рік становить ${resultYear} <br>`
+            }
+            // Функція  підрахунку свіх платежів у першій половині року
+            function getInFirstHalfOfYear(paymantYear, quantityMonth) {
+                let resultFirstHalfYear = 0
+                for (let i = 0; i < quantityMonth; i++) {
+                    resultFirstHalfYear += paymantYear[i]
+                }
+                return `<br>Загальна сума платежів за перше півріччя ${resultFirstHalfYear}<br> `
+            }
+            // Функція  підрахунку свіх платежів у другій половині року
+            function getInSecondHalfOfYear(paymantYear, quantityMonth) {
+                let resultSecondHalfYear = 0
+                for (let i = quantityMonth; i < paymantYear.length; i++) {
+                    resultSecondHalfYear += paymantYear[i]
+                }
+                return `<br>Загальна сума платежів за друге півріччя ${resultSecondHalfYear}<br> `
+            }
+            // Функція  підрахунку свіх платежів за літо
+            function getInSummerPaymant(paymantYear, startMonth, endMonth) {
+                let resultSummetPaymant = 0
+                for (let i = startMonth - 1; i < endMonth; i++) {
+                    resultSummetPaymant += paymantYear[i]
+                }
+                return `<br>Загальна сума платежів за літо ${resultSummetPaymant}<br>`
+            }
+            // Функція  підрахунку свіх платежів за ІІ квартал
+            function get_2nd_Quarter(paymantYear, startMonth, endMonth) {
+                let result_2nd_Quarter = 0
+                for (let i = startMonth - 1; i < endMonth; i++) {
+                    result_2nd_Quarter += paymantYear[i]
+                }
+                return `<br>Загальна сума платежів за 2 квартал ${result_2nd_Quarter}<br>`
+            }
+            // Функція  підрахунку свіх платежів за парні місяці(з парними номерами);
+            function getEvenMonths(paymantYear) {
+                let resultEvenMonths = 0
+                for (let i = 0; i < paymantYear.length; i++) {
+                    if ((i + 1) % 2 === 0) resultEvenMonths += paymantYear[i]
+                }
+                return `<br>Загальна сума платежів за парні місяці ${resultEvenMonths}<br>`
+            }
+            // Функція  підрахунку свіх платежів за місяці, які є початковими у сезоні(весна, літо, осінь, зима)
+            function getFirstSeasonalMonths(paymantYear) {
+                let resultFirstSeasonalMonths = 0
+                for (let i = 0; i < paymantYear.length; i++) {
+                    if ((i + 1) % 3 === 0) resultFirstSeasonalMonths += paymantYear[i]
+                }
+                return `<br>Загальна сума платежів за перші сезоні місяці ${resultFirstSeasonalMonths}<br>`
+            }
+
+            const newRandomArray = getRandomPaymant(1, 500, 12)
+            const sumPaymantAllYear = getResultPaymantAllYear(newRandomArray)
+            const sumFirstHalfOfYearPaymant = getInFirstHalfOfYear(newRandomArray, 6)
+            const sumSecondHaflOfYearPaymant = getInSecondHalfOfYear(newRandomArray, 6)
+            const sumSummerPaymant = getInSummerPaymant(newRandomArray, 6, 8)
+            const sum_2nd_Quarter = get_2nd_Quarter(newRandomArray, 4, 6)
+            const sumEvenMonths = getEvenMonths(newRandomArray)
+            const sumMonthFirstSeasonal = getFirstSeasonalMonths(newRandomArray)
+
+            document.write(sumPaymantAllYear)
+            document.write(sumFirstHalfOfYearPaymant)
+            document.write(sumSecondHaflOfYearPaymant)
+            document.write(sumSummerPaymant)
+            document.write(sum_2nd_Quarter)
+            document.write(sumEvenMonths)
+            document.write(sumMonthFirstSeasonal)
+        </script>
+    </body>
+
+</html>

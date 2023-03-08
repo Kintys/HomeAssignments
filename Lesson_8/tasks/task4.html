@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 4</title>
+    </head>
+
+    <body>
+        <script>
+            // Задача 4. Дано послідовність номерів автомобілів. Підрахувати кількість номерів, які :
+            //	починаються на букву «А»;
+            //	перша і остання літери співпадають;
+            //	складаються з більше ніш 5 символів;
+            const arrayCarName = ["AD41", "A041", "AQW414A", "A1G9", "BRE1323", "BFLR901", "GFMR7994", "RWSORP4", "D90D", "RET2918R"]
+            // Функція знаходження номерів машин які почитаются з літери А
+            function getCarNameStrtLetter_A(firstNumber) {
+                let sumNameFirstLetter_A = 0
+                for (let i = 0; i < firstNumber.length; i++) {
+                    if (firstNumber[i][0] === "A") sumNameFirstLetter_A++
+                }
+                return `Кількість номерів машин які починаются на літеру А  = ${sumNameFirstLetter_A}<br>`
+            }
+            // Функція знаходженн номерів у яких першиа і остатня літера однакові
+            function getNumberLettersThatMatch(firstLastLetter) {
+                let sumFurstLastLetter = 0
+                for (let i = 0; i < firstLastLetter.length; i++) {
+                    const firstLetter = firstLastLetter[i][0]
+                    const lastLetter = firstLastLetter[i][firstLastLetter[i].length - 1]
+                    if (firstLetter.toUpperCase() === lastLetter.toUpperCase()) sumFurstLastLetter++
+                }
+                return `<br>Кількість номерів мишин в кіх перший і остатній номер співпадає  = ${sumFurstLastLetter}<br>`
+            }
+            // Функція знаходження номерів більші за 5 
+            function getWordMore_5(wordMoreFive) {
+                let sumWordMoreive = 0
+                for (let i = 0; i < wordMoreFive.length; i++) {
+                    if (wordMoreFive[i].length > 5) sumWordMoreive++
+                }
+                return `<br>Кількість номерів машин номер якого складається більше 5 симболів = ${sumWordMoreive}<br>`
+            }
+            const showWordSmaller_5 = getWordMore_5(arrayCarName)
+            const showFirstAndLastLetter = getNumberLettersThatMatch(arrayCarName)
+            const showNameFirstLetter_A = getCarNameStrtLetter_A(arrayCarName)
+            document.write(showNameFirstLetter_A)
+            document.write(showFirstAndLastLetter)
+            document.write(showWordSmaller_5)
+        </script>
+    </body>
+
+</html>
