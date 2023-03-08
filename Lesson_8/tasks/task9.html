@@ -26,8 +26,8 @@
                 for (let i = 0; i < shipNumber; i++) {
                     const randomIndex = getRandomNumber(1, cellsNumber)
                     if (newArray[randomIndex] === 1) {
-                        continue
                         i--
+                        continue
                     }
                     newArray[randomIndex] = 1
                 }
