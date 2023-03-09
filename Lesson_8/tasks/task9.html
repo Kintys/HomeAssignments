@@ -24,35 +24,35 @@
             }
             function getRandomShipPlace(shipNumber, cellsNumber, newArray) {
                 for (let i = 0; i < shipNumber; i++) {
-                    const randomIndex = getRandomNumber(1, cellsNumber)
-                    if (newArray[randomIndex] === 1) {
-                        i--
-                        continue
-                    }
+                    let randomIndex
+                    do {
+                        randomIndex = getRandomNumber(0, cellsNumber - 1)
+                    } while (newArray[randomIndex] === 1);
                     newArray[randomIndex] = 1
                 }
                 return newArray
             }
             function getWinOrLosseResult(shipNumber, newArray) {
-                let result = 0
+                let winResult = 0
                 do {
-                    const userShot = parseInt(prompt("Ваш постріл"))
+                    const userShot = parseInt(prompt("Ваш постріл")) - 1
                     if (newArray[userShot] === 1) {
                         newArray[userShot] = 0
-                        result++
+                        shipNumber--
+                        winResult++
                     }
                     if (!isFinite(userShot)) {
-                        result
+                        winResult
                         break
                     }
                 }
-                while (result < shipNumber)
-                return result
+                while (shipNumber > 0)
+                return winResult
             }
             const gameArray = getGameArray(userNumberOfCells)
             const placeRandomShip = getRandomShipPlace(userNumberShip, userNumberOfCells, gameArray)
             const resultWinOrLosse = getWinOrLosseResult(userNumberShip, placeRandomShip)
-            document.write(`Кількість знищених кораблів становить ${resultWinOrLosse} з ${userNumberShip}`)
+            document.write(`Кількість знищених кораблів = ${resultWinOrLosse} х ${userNumberShip}`)
         </script>
     </head>
 
