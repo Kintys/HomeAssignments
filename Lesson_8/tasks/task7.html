@@ -11,7 +11,7 @@
 
     <body>
         <script>
-            // Задача 7. Дано послідовність платіжок протягом року.Знайти сумарну кількість грошей за:
+           // Задача 7. Дано послідовність платіжок протягом року.Знайти сумарну кількість грошей за:
             // за весь рік;
             // у першій половині року;
             // у другій половині року;
@@ -31,44 +31,12 @@
                 return newArray
             }
             // Функція  підрахунку свіх платежів за рік
-            function getResultPaymantAllYear(paymantYear) {
-                let resultYear = 0
-                for (let i = 0; i < paymantYear.length; i++) {
-                    resultYear += paymantYear[i]
+            function getResultPaymant(paymantYear, startMonth, endMonth) {
+                let result = 0
+                for (let i = startMonth; i < endMonth; i++) {
+                    result += paymantYear[i - 1]
                 }
-                return `<br> Загальна сума платежів за весь рік становить ${resultYear} <br>`
-            }
-            // Функція  підрахунку свіх платежів у першій половині року
-            function getInFirstHalfOfYear(paymantYear, quantityMonth) {
-                let resultFirstHalfYear = 0
-                for (let i = 0; i < quantityMonth; i++) {
-                    resultFirstHalfYear += paymantYear[i]
-                }
-                return `<br>Загальна сума платежів за перше півріччя ${resultFirstHalfYear}<br> `
-            }
-            // Функція  підрахунку свіх платежів у другій половині року
-            function getInSecondHalfOfYear(paymantYear, quantityMonth) {
-                let resultSecondHalfYear = 0
-                for (let i = quantityMonth; i < paymantYear.length; i++) {
-                    resultSecondHalfYear += paymantYear[i]
-                }
-                return `<br>Загальна сума платежів за друге півріччя ${resultSecondHalfYear}<br> `
-            }
-            // Функція  підрахунку свіх платежів за літо
-            function getInSummerPaymant(paymantYear, startMonth, endMonth) {
-                let resultSummetPaymant = 0
-                for (let i = startMonth - 1; i < endMonth; i++) {
-                    resultSummetPaymant += paymantYear[i]
-                }
-                return `<br>Загальна сума платежів за літо ${resultSummetPaymant}<br>`
-            }
-            // Функція  підрахунку свіх платежів за ІІ квартал
-            function get_2nd_Quarter(paymantYear, startMonth, endMonth) {
-                let result_2nd_Quarter = 0
-                for (let i = startMonth - 1; i < endMonth; i++) {
-                    result_2nd_Quarter += paymantYear[i]
-                }
-                return `<br>Загальна сума платежів за 2 квартал ${result_2nd_Quarter}<br>`
+                return result
             }
             // Функція  підрахунку свіх платежів за парні місяці(з парними номерами);
             function getEvenMonths(paymantYear) {
@@ -88,19 +56,19 @@
             }
 
             const newRandomArray = getRandomPaymant(1, 500, 12)
-            const sumPaymantAllYear = getResultPaymantAllYear(newRandomArray)
-            const sumFirstHalfOfYearPaymant = getInFirstHalfOfYear(newRandomArray, 6)
-            const sumSecondHaflOfYearPaymant = getInSecondHalfOfYear(newRandomArray, 6)
-            const sumSummerPaymant = getInSummerPaymant(newRandomArray, 6, 8)
-            const sum_2nd_Quarter = get_2nd_Quarter(newRandomArray, 4, 6)
+            const sumPaymantAllYear = getResultPaymant(newRandomArray, 1, 12)
+            const sumFirstHalfOfYearPaymant = getResultPaymant(newRandomArray, 1, 6)
+            const sumSecondHaflOfYearPaymant = getResultPaymant(newRandomArray, 6, 12)
+            const sumSummerPaymant = getResultPaymant(newRandomArray, 6, 8)
+            const sum_2nd_Quarter = getResultPaymant(newRandomArray, 4, 6)
             const sumEvenMonths = getEvenMonths(newRandomArray)
             const sumMonthFirstSeasonal = getFirstSeasonalMonths(newRandomArray)
 
-            document.write(sumPaymantAllYear)
-            document.write(sumFirstHalfOfYearPaymant)
-            document.write(sumSecondHaflOfYearPaymant)
-            document.write(sumSummerPaymant)
-            document.write(sum_2nd_Quarter)
+            document.write(`<br> Загальна сума платежів за весь рік становить ${sumPaymantAllYear} <br>`)
+            document.write(`<br>Загальна сума платежів за перше півріччя ${sumFirstHalfOfYearPaymant}<br> `)
+            document.write(`<br>Загальна сума платежів за друге півріччя ${sumSecondHaflOfYearPaymant}<br>`)
+            document.write(`<br>Загальна сума платежів за літо ${sumSummerPaymant}<br>`)
+            document.write(`<br>Загальна сума платежів за 2 квартал ${sum_2nd_Quarter}<br>`)
             document.write(sumEvenMonths)
             document.write(sumMonthFirstSeasonal)
         </script>
