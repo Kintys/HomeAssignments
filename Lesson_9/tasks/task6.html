@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 6
+        </title>
+    </head>
+
+    <body>
+        <script>
+            // 6.Дано масив елементів. Усі елементи, які більші за перший елемент помножити на 2
+            function getRandomNumber(minV, maxV, quantityRound) {
+                arr = []
+                for (let i = 0; i < quantityRound; i++) {
+                    const random = minV + Math.floor(Math.random() * (maxV - minV + 1))
+                    arr.push(random)
+                }
+                return arr
+            }
+            const randomNumber = getRandomNumber(1, 5, 10)
+            document.write(`Перший масив${randomNumber} <br>`)
+
+            function getNewMultipliedArray(newArray) {
+                newArray.forEach((element, index, array) => {
+                    if (element > array[0]) array[index] *= 2
+                });
+                return newArray
+            }
+            const showNewArray = getNewMultipliedArray(randomNumber)
+            document.write(`Другий масив ${showNewArray}`)
+        </script>
+    </body>
+
+</html>
