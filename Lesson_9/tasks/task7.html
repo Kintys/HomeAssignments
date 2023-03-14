@@ -22,9 +22,9 @@
                 return arr
             }
             const randomPrices = getRandomNumber(1, 2000, 15)
-            const newPriceArray = randomPrices.map((element) => element > 1000 ? (element * 0.7).toFixed(2) : element)
-            document.write(`Старі ціни ${randomPrices}<br>`)
-            document.write(`Ціни зі знижкою ${newPriceArray}`)
+            randomPrices = randomPrices.map((element) => element > 1000 ? (element * 0.7).toFixed(2) : element)
+            document.write(`${randomPrices}<br>`)
+            
         </script>
     </body>
 
