@@ -12,7 +12,7 @@
 
     <body>
         <script>
-            // Задача. Дано історію цін на цінні папери за деякий період (згенерувати від 1 до 10000)
+              // Задача. Дано історію цін на цінні папери за деякий період (згенерувати від 1 до 10000)
             function getRandomNumber(minV, maxV, quantityRound) {
                 arr = []
                 for (let i = 0; i < quantityRound; i++) {
@@ -25,14 +25,15 @@
             // 1) Сформувати новий масив, у якому є тільки ті, що більші за 1000 грн.
             const arrayGreaterThan_1000 = pricesNumber.filter(element => element > 1000 ? element : false)
             // 2) Сформувати новий масив, у якому є номери тільки тих, що більші за 1000 грн.
-            const arrayIndexGreaterThan_1000 = pricesNumber.filter(element => element > 1000).map((expensivePrice, index, array) => array.indexOf(expensivePrice))
-            // 3) Сформувати список з тих цін, які більші за попереднє значення
-            const greaterThanPrevious = pricesNumber.reduce((newArray, element, index, arr) => {
-                if (element > arr[index - 1]) {
-                    return [...newArray, element]
-                }
-                return newArray
+            const arrayIndexGreaterThan_1000 = pricesNumber.reduce((prevList, element, index) => {
+                if (element > 1000)
+                    prevList.push(index)
+                return prevList
             }, [])
+            // 3) Сформувати список з тих цін, які більші за попереднє 
+            const greaterThanPrevious = pricesNumber.filter((element, index, arr) => {
+                if (element > arr[index - 1]) return element
+            })
             // 4) Сформувати новий масив, що міститиме значення цін у відсотках стосовно максимального
             const maxPricesNumber = pricesNumber.reduce((maxV, element, index, arr) => element > maxV ? element : maxV, 0)
             const valueOfPriceAsPercentageOfMax = pricesNumber.map(element => (element / maxPricesNumber * 100).toFixed(2))
