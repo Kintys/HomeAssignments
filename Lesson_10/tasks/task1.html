@@ -12,7 +12,7 @@
 
     <body>
         <script>
-              // Задача. Дано історію цін на цінні папери за деякий період (згенерувати від 1 до 10000)
+             // Задача. Дано історію цін на цінні папери за деякий період (згенерувати від 1 до 10000)
             function getRandomNumber(minV, maxV, quantityRound) {
                 arr = []
                 for (let i = 0; i < quantityRound; i++) {
@@ -31,12 +31,14 @@
                 return prevList
             }, [])
             // 3) Сформувати список з тих цін, які більші за попереднє 
-            const greaterThanPrevious = pricesNumber.filter((element, index, arr) => {
-                if (element > arr[index - 1]) return element
-            })
+            let greaterThanPrevious = []
+            for (let i = 1; i < pricesNumber.length; i++) {
+                if (pricesNumber[i] > pricesNumber[i - 1])
+                    greaterThanPrevious.push(pricesNumber[i])
+            }
             // 4) Сформувати новий масив, що міститиме значення цін у відсотках стосовно максимального
             const maxPricesNumber = pricesNumber.reduce((maxV, element, index, arr) => element > maxV ? element : maxV, 0)
-            const valueOfPriceAsPercentageOfMax = pricesNumber.map(element => (element / maxPricesNumber * 100).toFixed(2))
+            const valueOfPriceAsPercentageOfMax = pricesNumber.map(element => element / maxPricesNumber * 100)
             // 5) Підрахувати кількість змін цін
             const differenceInNumberOfPrices = pricesNumber.reduce((prev, element, index, arr) =>
                 element !== arr[index - 1] ? prev + 1 : prev, 0)
@@ -61,7 +63,7 @@
             document.write(`<br>Ціни більше за 1000 = ${arrayGreaterThan_1000}<br>`)
             document.write(`<br>Список номерів більше за 1000 = ${arrayIndexGreaterThan_1000}<br>`)
             document.write(`<br> Сформувати список з тих цін, які більші за попереднє значення  ${greaterThanPrevious}<br>`)
-            document.write(`<br>Сформувати новий масив, що міститиме значення цін у відсотках стосовно максимального ${valueOfPriceAsPercentageOfMax}<br>`)
+            document.write(`<br>Сформувати новий масив, що міститиме значення цін у відсотках стосовно максимального ${valueOfPriceAsPercentageOfMax.toFixed(2)}<br>`)
             document.write(`<br>Кількість змін цін ${differenceInNumberOfPrices}<br>`)
             document.write(`<br> Визначити, чи є ціна, що менше 1000 = ${priceMoreThan_1000}<br>`)
             document.write(`<br>Визначати, чи усі ціни більше за 1000 = ${allPriceMoreThan_1000}<br>`)
