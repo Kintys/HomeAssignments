@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 1</title>
+
+    </head>
+
+    <body>
+        <script>
+            function getRandowArray(minV, maxV, quantity) {
+                let arr = []
+                for (let i = 0; i < quantity; i++) {
+                    arr.push(minV + Math.floor(Math.random() * (maxV - minV + 1)))
+                }
+                return arr
+            }
+            const newRandomArray = getRandowArray(1, 100, 30)
+            // Задача 1. Дано масив 30 випадкових цілих чисел. Підрахувати скільки було обмінів під час сортування бульбашкою
+            document.write(`<br> Створений массив: ${newRandomArray}<br>`)
+            function getSotrArrayBubbleMethod(arrSort) {
+                let current = 0
+                let swapped
+                do {
+                    swapped = false
+                    for (let i = 1; i < arrSort.length; i++) {
+                        if (arrSort[i - 1] > arrSort[i]) {
+                            let temp = arrSort[i]
+                            arrSort[i] = arrSort[i - 1]
+                            arrSort[i - 1] = temp
+                            swapped = true
+                            current++
+                        }
+                    }
+                } while (swapped);
+                return current
+            }
+            const sortArrBubbleMethod = getSotrArrayBubbleMethod(newRandomArray)
+            document.write(`<br>Кількість обменів під час сортовання бульбашкою ${sortArrBubbleMethod}<br>`)
+
+        </script>
+    </body>
+
+</html>

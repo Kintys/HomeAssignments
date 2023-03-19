@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 4</title>
+
+    </head>
+
+    <body>
+        <script>
+            function getRandowArray(minV, maxV, quantity) {
+                let arr = []
+                for (let i = 0; i < quantity; i++) {
+                    arr.push(minV + Math.floor(Math.random() * (maxV - minV + 1)))
+                }
+                return arr
+            }
+            const newRandomArray = getRandowArray(1, 100, 5)
+            document.write(`<br> Створений массив: ${newRandomArray}<br>`)
+
+            // Задача 4. Для розглянутих методів сортування спробувати вивести етапи сортування шляхом виведення відповідних таблиць за зразком.
+            // Сортовання бульбашкою
+            function getSotrArrayBubbleMethod(arrSort) {
+                arrSort = [...arrSort]
+                let arrStates = [[...arrSort]]
+                let swapped
+                do {
+                    swapped = false
+                    for (let i = 1; i < arrSort.length; i++) {
+                        if (arrSort[i - 1] > arrSort[i]) {
+                            let temp = arrSort[i]
+                            arrSort[i] = arrSort[i - 1]
+                            arrSort[i - 1] = temp
+                            swapped = true
+                            arrStates.push([...arrSort])
+                        }
+                    }
+                } while (swapped);
+                return arrStates
+            }
+            const sortArrBubbleMethod = getSotrArrayBubbleMethod(newRandomArray)
+            // Сортування змішуванням
+            function getSortArrayCocktailMethod(arr) {
+                arr = [...arr]
+                let arrStates = [[...arr]]
+                let leftIndex = 0
+                let rightIndex = arr.length - 1
+                while (leftIndex < rightIndex) {
+                    for (let i = leftIndex; i < rightIndex; i++) {
+                        if (arr[i] > arr[i + 1]) {
+                            [arr[i + 1], arr[i]] = [arr[i], arr[i + 1]]
+                            arrStates.push([...arr])
+                        }
+                    }
+                    rightIndex--;
+                    for (let i = rightIndex; i > leftIndex; i--) {
+                        if (arr[i] < arr[i - 1]) {
+                            [arr[i - 1], arr[i]] = [arr[i], arr[i - 1]]
+                            arrStates.push([...arr])
+                        }
+                    }
+                    leftIndex++;
+                }
+                return arrStates
+            }
+            const showSwapNumber = getSortArrayCocktailMethod(newRandomArray)
+            //Cортування включенням
+            function getInclusionSort(arr) {
+                arr = [...arr]
+                let arrStates = [[...arr]]
+                let key, i
+                for (let k = 1; k < arr.length; k++) {
+                    key = arr[k]
+                    i = k - 1
+                    while (i >= 0 && arr[i] > key) {
+                        arr[i + 1] = arr[i]
+                        i = i - 1
+                    }
+                    arr[i + 1] = key
+                    arrStates.push([...arr])
+                }
+                return arrStates
+            }
+            const showNumberSort = getInclusionSort(newRandomArray)
+            // Виведення результу
+            function printArray(arr, title) {
+                document.write(`<br>${title}`)
+                for (let i = 0; i < arr.length; i++) {
+                    document.write(`<br>[${arr[i]}]`)
+                }
+                document.write(`<br>`)
+            }
+            const showArr1 = printArray(sortArrBubbleMethod, "Сортовання бульбашкою")
+            const showArr2 = printArray(showSwapNumber, "Сортування змішуванням")
+            const showArr3 = printArray(showNumberSort, "Cортування включенням")
+        </script>
+        <main>
+        </main>
+    </body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 3</title>
+
+    </head>
+
+    <body>
+        <script>
+            function getRandowArray(minV, maxV, quantity) {
+                let arr = []
+                for (let i = 0; i < quantity; i++) {
+                    arr.push(minV + Math.floor(Math.random() * (maxV - minV + 1)))
+                }
+                return arr
+            }
+            const newRandomArray = getRandowArray(1, 100, 30)
+            document.write(`<br> Створений массив: ${newRandomArray}<br>`)
+            //Задача 3. Дано масив 30 випадкових цілих чисел. Підрахувати скільки було обмінів під час сортування включеннями.
+            function getInclusionSort(arr) {
+                let changeNumber = 0
+                let key, i
+                for (let k = 1; k < arr.length; k++) {
+                    key = arr[k]
+                    i = k - 1
+                    while (i >= 0 && arr[i] > key) {
+                        arr[i + 1] = arr[i]
+                        i = i - 1
+                        changeNumber++
+                    }
+                    arr[i + 1] = key
+                }
+                return changeNumber
+            }
+            const showNumberSort = getInclusionSort(newRandomArray)
+            document.write(`<br>Кількість обменів під час сортування включенням ${showNumberSort}<br>`)
+
+        </script>
+    </body>
+
+</html>
