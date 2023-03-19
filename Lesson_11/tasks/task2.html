@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 2</title>
+
+    </head>
+
+    <body>
+        <script>
+            function getTwoDimensionalArrayRamdom(rowNumb, columnNumb, minV, maxV) {
+                let table = []
+                for (let i = 0; i < rowNumb; i++) {
+                    let arr = []
+                    for (let j = 0; j < columnNumb; j++) {
+                        const randomNumb = minV + Math.floor(Math.random() * (maxV - minV + 1))
+                        arr.push(randomNumb)
+                    }
+                    table.push(arr)
+                }
+                return table
+            }
+            const newArray = getTwoDimensionalArrayRamdom(5, 7, 1, 1000)
+
+
+            function getSumProfitWeek(arr) {
+                let sum = []
+                for (let i = 0; i < arr.length; i++) {
+                    let profit = 0
+                    for (let j = 0; j < arr[i].length; j++) {
+                        profit += arr[i][j]
+                    }
+                    sum.push(profit)
+                }
+                return sum
+            }
+            const showProfitAllWeek = getSumProfitWeek(newArray)
+
+
+            function getSumProfitDay(arr) {
+                let sum = []
+                for (let i = 0; i < arr[0].length; i++) {
+                    let profit = 0
+                    for (let j = 0; j < arr.length; j++) {
+                        profit += arr[j][i]
+                    }
+                    sum.push(profit)
+                }
+                return sum
+            }
+            const showProfitDay = getSumProfitDay(newArray)
+
+
+            function getSumProfitForWorkDay(arr) {
+                let sum = []
+                for (let i = 0; i < arr.length; i++) {
+                    let profit = 0
+                    for (let j = 0; j < 5; j++) {
+                        profit += arr[i][j]
+                    }
+                    sum.push(profit)
+                }
+                return sum
+            }
+            const showProfitWorkDay = getSumProfitForWorkDay(newArray)
+
+            function getSumProfitWeekendDay(arr) {
+                let sum = []
+                for (let i = 0; i < arr.length; i++) {
+                    let profit = 0
+                    for (let j = 5; j < arr[i].length; j++) {
+                        profit += arr[i][j]
+                    }
+                    sum.push(profit)
+                }
+                return sum
+            }
+            const showProfitWeekendDay = getSumProfitWeekendDay(newArray)
+
+            function getMaxSumForWednesday(arr) {
+                let maxProfitWednesday = -Infinity
+                for (let i = 0; i < arr.length; i++) {
+                    for (let j = 2; j < 3; j++) {
+                        if (arr[i][j] > maxProfitWednesday) maxProfitWednesday = arr[i][j]
+                    }
+                }
+                return maxProfitWednesday
+            }
+            const showMaxProfitForWednesday = getMaxSumForWednesday(newArray)
+
+
+            function isSumNumberMoreThan_200(arr) {
+                sum = []
+                for (let i = 0; i < arr.length; i++) {
+                    profit = []
+                    for (let j = 0; j < arr[i].length; j++) {
+                        if (arr[i][j] > 200) profit.push(arr[i][j])
+                    }
+                    sum.push(profit)
+                }
+                return sum
+            }
+            const showNumberMoreThan_200 = isSumNumberMoreThan_200(newArray)
+
+
+            function getSortWeekAscendingOrder(arr) {
+                for (let i = 0; i < arr.length; i++) {
+                    arr[i].sort((el1, el2) => el1 - el2)
+                }
+                return arr
+            }
+            function getSortWeeksAscendingOrder(arr) {
+                for (let i = 0; i < arr.length; i++) {
+                    arr[i].sort((el1, el2) => el1 - el2)
+                }
+                return arr
+            }
+            const showSortWeek = getSortWeeksAscendingOrder(newArray)
+
+
+            function getSortWeeksInDescendingOrderOFMaxElem(arr) {
+                for (let i = 0; i < arr.length; i++) {
+                    arr[i].sort((el1, el2) => {
+                        if (el1 > el2) return -1
+                        if (el1 < el2) return 1
+                        if (el1 === el2) return 0
+                    })
+                }
+                return arr
+            }
+            const showSortWeeksInDescendingOrderOFMaxElem = getSortWeeksInDescendingOrderOFMaxElem(newArray)
+
+
+
+            function getSortArrangeWeeks(arr) {
+                return arr.reduce((sum, el) => sum + el, 0)
+            }
+            const showArrangeSortWeeks = newArray.sort((el1, el2) => getSortArrangeWeeks(el1) - getSortArrangeWeeks(el2))
+
+
+
+            document.write(`<br>Новий масив ${newArray}<br>`)
+
+            document.write(`<br>Загальний прибуток кожного масиву за тиждень ${showProfitAllWeek}
+            <br>`)
+
+            document.write(`<br> загальний прибуток усіх магазинів по дням (загальний прибуток усіх магазинів за понеділок, за вівторок, і т.д.) ${showProfitDay}<br>`)
+
+            document.write(`<br>  загальний прибуток за робочі дні ${showProfitWorkDay}<br>`)
+
+            document.write(`<br> загальний прибуток за вихідні дні ${showProfitWeekendDay}<br>`)
+
+            document.write(`<br> максимальний прибуток за середу ${showMaxProfitForWednesday}<br>`)
+
+            document.write(`<br>сформувати загальний список (одновимірний масив) зі значенням, які що більші за 200 ${showNumberMoreThan_200}<br>`)
+
+            document.write(`<br>відсортувати кожен тиждень за зростанням ${showSortWeek}<br>`)
+
+            document.write(`<br>відсортувати тижні (рядки) за спаданням максимального елементи у цьому тижні (рядку), тобто при порівнянні рядків потрібно порівнювати максимальні елементи у кожному з цих рядків ${showSortWeeksInDescendingOrderOFMaxElem}<br>`)
+
+            document.write(`<br>упорядкувати тижні (рядки) за спаданням суми елементів у рядку (тобто при порівнянні двох рядків треба знайти суму кожного з рядків і порівнювати ці суми, на основі цих сум буде зрозуміло, який з елементів повинен іти раніше). 
+            ${showArrangeSortWeeks}<br>`)
+        </script>
+    </body>
+
+</html>
