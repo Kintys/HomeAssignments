@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 1</title>
+
+    </head>
+
+    <body>
+        <script>
+            const testArray =
+                [[24, 14, 41, 41],
+                [14, 21, 54, 65,],
+                [56, 53, 32, 13],
+                [43, 94, 19, 91]]
+            // Задача 1. Знайти суми елементів у вказаній області
+            function getSumTestArray(rowIndex, quantityRow, columnIndex, quantityColumn, arr) {
+                let sum = 0
+                for (let row = rowIndex; row <= quantityRow; row++) {
+                    for (let column = columnIndex; column <= quantityColumn; column++) {
+                        sum += arr[row][column]
+                    }
+
+                }
+                return sum
+            }
+            function printArray(arr, title) {
+                document.write(`${title}<br>`)
+                for (let i = 0; i < arr.length; i++) {
+                    document.write(`${arr[i]}<br>`)
+                }
+                return arr
+            }
+            const showFirstSum = getSumTestArray(0, 1, 0, 1, testArray)
+            const showSecondSum = getSumTestArray(0, 1, 2, 3, testArray)
+            const showThirdSum = getSumTestArray(2, 3, 0, 1, testArray)
+            const showFoursSum = getSumTestArray(2, 3, 2, 3, testArray)
+            console.log(`Перша область ${showFirstSum}`)
+            console.log(`Друга область ${showSecondSum}`)
+            console.log(`Третя область ${showThirdSum}`)
+            console.log(`Четверта область ${showFoursSum}`)
+
+            printArray(testArray, "Новий массив")
+
+            document.write(`
+            Перша область ${showFirstSum}<br>
+            Друга область ${showSecondSum}<br>
+            Третя область ${showThirdSum}<br>
+            Четверта область ${showFoursSum}<br>
+            `)
+            // Суму парних рядків
+            {
+                let sum = 0
+                for (let i = 0; i < testArray.length; i += 2) {
+                    for (let j = 0; j < testArray[i].length; j++) {
+                        sum += testArray[i][j]
+                    }
+                }
+                document.write(`Сума парних рядків ${sum}<br>`)
+            }
+            // Суму непарних стовпців
+            {
+                let sum = 0
+                for (let i = 0; i < testArray.length; i++) {
+                    for (let j = 1; j < testArray[i].length; j += 2) {
+                        sum += testArray[i][j]
+                    }
+                }
+                document.write(`Сума непарних стобців ${sum}<br>`)
+            }
+            {
+                let sum = 0
+                for (let i = 0; i < testArray.length; i += 2) {
+                    for (let j = 1; j < testArray[i].length; j += 2) {
+                        sum += testArray[i][j]
+                    }
+                }
+                document.write(`Сума парних рядків і непарних стобців ${sum}<br>`)
+            }
+
+        </script>
+    </body>
+
+</html>
