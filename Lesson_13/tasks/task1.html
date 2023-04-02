@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 1</title>
+
+    </head>
+
+    <body>
+        <script>
+            // Задача 1. Нехай  x0 = 1 , x1 = x(i-1) + 2(i), де (i) 1,2,, . Визначити . Розв’язати з використанням рекурсивних і нерекурсивних алгоритмів
+            const userNumb_X = parseInt(prompt(`Введіть число X`))
+            function get_X_DegreesNotResursionMethod(xNumb) {
+                let previousValue_X = 1
+                let X = 0
+                for (let i = 0; i <= xNumb; i++) {
+                    X = previousValue_X + (2 * i)
+                    previousValue_X = X
+                }
+                return X
+            }
+            const showResultNotResursion = get_X_DegreesNotResursionMethod(userNumb_X)
+            document.write(`Результат x10 нерекурсивний алгоритм ${showResultNotResursion}<br>`)
+            function get_X_DegreesRecursionMethod(x) {
+                if (x === 0) return 1
+                else return get_X_DegreesNotResursionMethod(x - 1) + 2 * x
+            }
+            const showResultResursionMeth = get_X_DegreesRecursionMethod(userNumb_X)
+            document.write(`Результат x10 рекурсивний алгоритм ${showResultResursionMeth}`)
+        </script>
+    </body>
+
+</html>

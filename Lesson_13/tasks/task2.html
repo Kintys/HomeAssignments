@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 2</title>
+
+    </head>
+
+    <body>
+        <script>
+            // Задача 2.  Нехай x(0) =1  , x(1)=x(i-1)+ 2 * x(i-2), де i = 2,3.... . Визначити . Розв’язати з використанням рекурсивних і нерекурсивних алгоритмів
+            const userNumb_X = parseInt(prompt(`Введіть число X`))
+            function get_X_DegreesNotResursion(xNumb) {
+                let previousValue_X_0 = 1
+                let previousValue_X_1 = 1
+                let X = 0
+                for (let i = 2; i <= xNumb; i++) {
+                    X = previousValue_X_0 + (2 * previousValue_X_1)
+                    previousValue_X_1 = previousValue_X_0
+                    previousValue_X_0 = X
+                }
+                return X
+            }
+            const showTaskSolutionNotResursion = get_X_DegreesRecursion(userNumb_X)
+            function get_X_DegreesRecursion(x) {
+                if (i <= 1) return 1
+                return get_X_DegreesRecursion(x - 1) + 2 * get_X_DegreesRecursion(x - 2)
+
+            }
+
+            const showTaskSolutionResursion = get_X_DegreesNotResursion(userNumb_X)
+
+            document.write(`Результат x10 нерекурсивний алгоритм ${showTaskSolutionNotResursion}<br>`)
+
+            document.write(`Результат x10 рекурсивний алгоритм ${showTaskSolutionResursion}<br>`)
+        </script>
+    </body>
+
+</html>

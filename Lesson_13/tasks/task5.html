@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 5</title>
+
+    </head>
+
+    <body>
+        <script>
+            // Задача 5. Тренажер додавання. Кожні 10 секунд користувачу
+            // задають випадковий приклад з додавання двох
+            // цифр і робиться перевірка.
+            const massengeForUser = alert(`Тренажер множення зачекайте 10 секунд`)
+            function getRandomNumb(minV, maxV) {
+                return minV + Math.floor(Math.random() * (maxV - minV + 1))
+            }
+            function addinionsQuestionsInterval(interval) {
+                setTimeout(
+                    () => {
+                        const firsN = getRandomNumb(1, 100)
+                        const secondN = getRandomNumb(1, 100)
+                        const userAnswer = prompt(`${firsN} + ${secondN}`)
+                        const result = firsN + secondN
+                        if (result === userAnswer) alert(`Вірний результат обчисдення ${firsN} + ${secondN} =  ${result} `)
+                        else alert(`Не вірний результат обчислення ${firsN} + ${secondN} =  ${result}`)
+                        addinionsQuestionsInterval(interval)
+                    },
+                    interval)
+            }
+            let showAnswer = addinionsQuestionsInterval(10000) 
+        </script>
+    </body>
+
+</html>
