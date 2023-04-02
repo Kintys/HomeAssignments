@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 1</title>
+
+    </head>
+
+    <body>
+        <script>
+            //             Задача 1. Описати масив об’єктів – сайтів розроблених компанією      зтакими властивостями
+            //             ----- Властивості ------
+            //             назва компанії на час розробки (назву періодично змінюють)
+            //             власник компанії
+            //             споснсори (масив спонсорів)
+            //                          * прізвище спонсора
+            //                   * ім’я  спонсора
+            //                   * сума вкладень спонсора
+            //             рік випуску
+            //             вартість сайту
+            const webDevCompanyList = [
+                {
+                    title: 'EPAM',
+                    owner: 'Oliver',
+                    sponsors:
+                        [
+                            {
+                                surname: 'Smith',
+                                firstName: 'Isabella',
+                                sumInvestment: 2031003,
+                            },
+                            {
+                                surname: 'Johnson',
+                                firstName: 'Ethan',
+                                sumInvestment: 341244,
+                            }, {
+                                surname: 'Davis',
+                                firstName: 'William',
+                                sumInvestment: 55443,
+                            }
+                        ],
+                    yearProduction: 2016,
+                    priceSite: 3040,
+                },
+                {
+                    title: 'SoftServe',
+                    owner: 'Emily',
+                    sponsors:
+                        [
+                            {
+                                surname: 'Martinez',
+                                firstName: 'Noah',
+                                sumInvestment: 1424,
+                            },
+                            {
+                                surname: 'Brown',
+                                firstName: 'Alexander',
+                                sumInvestment: 413313,
+                            }, {
+                                surname: 'Wilson',
+                                firstName: 'Grace',
+                                sumInvestment: 6644,
+                            }
+                        ],
+                    yearProduction: 2018,
+                    priceSite: 60000,
+                },
+                {
+                    title: 'GlobalLogic',
+                    owner: 'Sophia',
+                    sponsors:
+                        [
+                            {
+                                surname: 'Anderson',
+                                firstName: 'Ava',
+                                sumInvestment: 100,
+                            },
+                            {
+                                surname: 'Brown',
+                                firstName: 'Benjamin',
+                                sumInvestment: 1244,
+                            }, {
+                                surname: 'Jones',
+                                firstName: 'Charlotte',
+                                sumInvestment: 2144,
+                            }
+                        ],
+                    yearProduction: 2007,
+                    priceSite: 1000,
+                },
+                {
+                    title: 'Ciklum',
+                    owner: 'Oliver',
+                    sponsors:
+                        [
+                            {
+                                surname: 'Anderson',
+                                firstName: 'Isabella',
+                                sumInvestment: 20310,
+                            },
+                            {
+                                surname: 'Brown',
+                                firstName: 'Ethan',
+                                sumInvestment: 34124,
+                            },
+                            {
+                                surname: 'Martin',
+                                firstName: 'William',
+                                sumInvestment: 55443,
+                            }
+                        ],
+                    yearProduction: 2003,
+                    priceSite: 504140,
+                },
+
+            ]
+            // 1) загальну вартість усіх сайтів
+            const sumAllWebSite = webDevCompanyList.reduce((prevNum, webSite) =>
+                prevNum += webSite.priceSite, 0)
+            document.write(`Загальну вартість усіх сайтів = ${sumAllWebSite}<br>`)
+            // 2) кількість сайтів, що було зроблено між 2000 та 2009 рр.
+            const webSiteNumbMadeBetween_2000_and_2009 = webDevCompanyList.reduce((prevNm, webSite) => webSite.yearProduction > 2000 && webSite.yearProduction < 2009 ? ++prevNm : prevNm, 0)
+            document.write(`Кількість сайтів, що було зроблено між 2000 та 2009 рр = ${webSiteNumbMadeBetween_2000_and_2009}<br>`)
+            // 3) ) кількість сайтів, де сума спонсорських вкладень була більшою за 100000
+            const webSiteNumberInvestmentMore_100000 = webDevCompanyList.reduce((prevN, site) => {
+                const totalInvestment = site.sponsors.reduce((prevN, sponsor) => prevN + sponsor.sumInvestment, 0)
+                if (totalInvestment > 100000) prevN++
+                return prevN
+            }, 0)
+            document.write(`Kількість сайтів, де сума спонсорських вкладень була більшою за 100000 = ${webSiteNumberInvestmentMore_100000}<br>`)
+            // 4) створити загальний список усіх спонсорів (поки можуть повторюватись, просто зібрати усі у масив)
+            const sponsorList = webDevCompanyList.map(site => {
+                const newList = site.sponsors.map(sponsor => `<br>${sponsor.surname}-${sponsor.firstName}`)
+                return newList
+            })
+            document.write(`створити загальний список усіх спонсорів  = ${sponsorList}<br>`)
+            //  5) знайти рік, коли прибуток був найбільшим
+
+            const maxProfitYears = webDevCompanyList.reduce((prevMax, webSite) => webSite.priceSite > prevMax.priceSite ? webSite.yearProduction : prevMax)
+            document.write(`знайти рік, коли прибуток був найбільшим = ${maxProfitYears}<br>`)
+            // 6) упорядкувати список за спаданням прибутку
+            function getSumList(arr) {
+                let listCompanies = JSON.parse(JSON.stringify(arr))
+                let newSumList = listCompanies.map(price => price.priceSite)
+                return newSumList
+            }
+            const sumList = getSumList(webDevCompanyList)
+
+            function sortArray(arrMax, arr) {
+                let lastIndex = arrMax.length - 1
+                for (let i = 0; i < lastIndex; i++) {
+                    let currentMinNumb = i
+                    for (let j = i + 1; j < arrMax.length; j++) {
+                        if (arrMax[j] > arrMax[currentMinNumb]) currentMinNumb = j
+                    }
+                    if (i !== currentMinNumb) {
+                        let temp = arrMax[i]
+                        arrMax[i] = arrMax[currentMinNumb]
+                        arrMax[currentMinNumb] = temp
+                        temp = arr[i]
+                        arr[i] = arr[currentMinNumb]
+                        arr[currentMinNumb] = temp
+                    }
+                }
+                return arr
+            }
+            const sortPrice = sortArray(sumList, webDevCompanyList)
+            console.log(sortPrice)
+
+            //7) Створити 2 окремих списки з копіями об’єктів, що містять сайти з вартість до 10000 і більше 10000
+            const newArrSitePriceMore_10000 = JSON.parse(JSON.stringify(webDevCompanyList.filter(site => site.priceSite > 10000)))
+            const newArrSitePriceless_10000 = JSON.parse(JSON.stringify(webDevCompanyList.filter(site => site.priceSite < 10000)))
+            console.log(newArrSitePriceMore_10000)
+            console.log(newArrSitePriceless_10000)
+        </script>
+    </body>
+
+</html>
