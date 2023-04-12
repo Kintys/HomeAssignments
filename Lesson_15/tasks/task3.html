@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 2</title>
+
+    </head>
+
+    <body>
+        <h1>Задача 2. Створити об’єкт «Авто».</h1>
+        <script>
+            // Задача 2. Створити об’єкт «Авто».
+            function Auto() {
+                this.marks = 'Mitsubishi Lancer',
+                    this.tankSiz = 40,
+                    this.litresAvailable = 4,
+                    this.seats = 5,
+                    this.passengers = 1
+            }
+            Auto.prototype.getFuelling = function () {
+                do {
+                    alert(`Поточний стан палива ${this.litresAvailable} л`)
+                    const userLiter = parseInt(prompt(`Кількість вільного місця в баку ${this.tankSiz - this.litresAvailable} `))
+                    if (!isFinite(userLiter)) break
+                    this.litresAvailable += userLiter
+                } while (this.litresAvailable < this.tankSiz);
+                return this.litresAvailable
+            }
+            Auto.prototype.conclusionsPassenger = function () {
+                return `Поточна кількість пасажирів ${this.passengers}`
+            }
+            Auto.prototype.addPassenger = function () {
+                do {
+                    const userPassegers = parseInt(prompt(`В салоні вільних ${this.seats - this.passengers} мість`))
+                    if (!isFinite(userPassegers)) break
+                    if (userPassegers > (this.seats - this.passengers)) alert(`Велика кількість пасажирів`)
+                    else this.passengers += userPassegers
+                } while (this.passengers < this.seats);
+                return this.passengers
+            }
+            Auto.prototype.disembarkingPassengers = function () {
+                do {
+                    const userPassegers = parseInt(prompt(`скільки пасажирів ви хочете висадити?  Поточна кількість ${this.passengers}`))
+                    if (!isFinite(userPassegers)) break
+                    if (userPassegers > this.passengers) alert(`Велика кількість пасажирів`)
+                    else this.passengers -= userPassegers
+                } while (this.passengers > 0);
+                return this.passengers
+            }
+            Auto.prototype.toString = function () {
+                return `Бензин ${this.litresAvailable} <br>
+                                Кількість мість ${this.seats}<br>
+                                Кількість пасажирів ${this.passengers}`
+            }
+            let auto = new Auto()
+            auto.getFuelling()
+            alert(auto.conclusionsPassenger())
+            auto.addPassenger()
+            auto.disembarkingPassengers()
+            document.write(auto.toString())
+        </script>
+    </body>
+
+</html>
