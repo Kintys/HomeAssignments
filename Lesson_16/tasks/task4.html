@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 4</title>
+
+    </head>
+    <h1>Створити клас TBankomat, який моделює роботу банкомата. Клас повинен містити поля для зберігання кількості купюр кожного із номіналів від 5 до 200 гривень. Реалізувати методи знаходження максимальної та мінімальної сум, які може видати банкомат, та метод зняття деякої суми.</h1><br>4
+
+    <body>
+        <script>
+            // Створити клас TBankomat, який моделює роботу банкомата. Клас повинен містити поля для зберігання кількості купюр кожного із номіналів від 5 до 200 гривень. Реалізувати методи знаходження максимальної та мінімальної сум, які може видати банкомат, та метод зняття деякої суми.
+            class Banknote {
+                constructor(initRate, initValue) {
+                    this.rate = initRate
+                    this.value = initValue
+                }
+                toString() {
+                    return `${this.rate} - ${this.value}`
+                }
+            }
+            class TBankomat {
+                constructor(banknoteList) {
+                    this.banknoteList = banknoteList
+                }
+                minSum() {
+                    for (const banknote of this.banknoteList) {
+                        if (banknote.value) return banknote.rate
+                    }
+                    return 0
+                }
+                maxSum() {
+                    return this.banknoteList.reduce(
+                        (prev, banknote) => prev + banknote.value * banknote.rate, 0)
+                }
+                withdraw(userMoney) {
+                    if (userMoney < this.minSum() || userMoney > this.maxSum())
+                        throw new Error('Некоректна сума!')
+                    let result = ''
+                    for (let i = this.banknoteList.length - 1; i >= 0; i--) {
+                        let count = 0
+                        while (userMoney >= this.banknoteList[i].rate && this.banknoteList[i].value !== 0) {
+                            count++
+                            userMoney -= this.banknoteList[i].rate
+                            this.banknoteList[i].value -= 1
+                        }
+                        if (count === 0) continue
+                        result += `${this.banknoteList[i].rate}грн - ${count}.шт <br>`
+                    }
+                    return result
+                }
+                toString() {
+                    return `${this.banknoteList}`
+                }
+            }
+            let bankknotesList = [
+                new Banknote(5, 10),
+                new Banknote(10, 40),
+                new Banknote(20, 60),
+                new Banknote(50, 30),
+                new Banknote(100, 70),
+                new Banknote(200, 4),
+            ]
+            const bank = new TBankomat(bankknotesList)
+            const userMoney = parseInt(prompt(`Мінімальна сума = ${bank.minSum()}, Максимальна сума = ${bank.maxSum()}. Введіть суму яку ви хочете зняти `))
+            document.write(bank.withdraw(userMoney))
+        </script>
+        <main>
+        </main>
+    </body>
+
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 3</title>
+
+    </head>
+
+    <body>
+        <h1>Задача 3. Об’єкт “Фірма” (використати члени-класи)</h1>
+        <script>
+            // Задача 3. Об’єкт “Фірма” (використати члени-класи)
+            class DateFounding {
+                #month
+                #year
+                constructor(month, year) {
+                    this.Month = month
+                    this.Year = year
+                }
+
+                get Month() {
+                    return this.#month
+                }
+                set Month(companyMonth) {
+                    if (companyMonth < 0 || companyMonth > 12)
+                        throw new Error(`Month is inccorect`)
+                    return this.#month = companyMonth
+                }
+
+                get Year() {
+                    return this.#year
+                }
+                set Year(companyYear) {
+                    if (!isFinite(companyYear) || companyYear < 0)
+                        throw new Error(`Year is inccorect`)
+                    return this.#year = companyYear
+                }
+
+                toString() {
+                    return ` Місяць - ${this.Month} Рік - ${this.Year} <br>`
+                }
+            }
+
+            class Services {
+                constructor(title, cost, time) {
+                    this.title = title
+                    this.cost = cost
+                    this.time = time
+                }
+                toString() {
+                    return `Назва послуги: ${this.title}, Ціна: ${this.cost}, Час виконання: ${this.time} годин`
+                }
+            }
+            class Branches {
+                constructor(country, city, street, houseNumber) {
+                    this.country = country
+                    this.city = city
+                    this.street = street
+                    this.houseNumber = houseNumber
+                }
+                toString() {
+                    return `${this.country}, Місто: ${this.city}, Вулиця: ${this.street}, Номер Дому: ${this.houseNumber}.<br>`
+                }
+            }
+
+            class CompanyList {
+                constructor(name, dateFounding, services, addresBranches) {
+                    this.name = name
+                    this.dateFounding = dateFounding
+                    this.services = services
+                    this.addresBranches = addresBranches
+                }
+
+                getNumberYearsCompany() {
+                    const year = new Date().getFullYear()
+                    return year - this.dateFounding.Year
+                }
+                printBranches(userCity) {
+                    return this.addresBranches.filter(branches => userCity === branches.city)
+                }
+                printServices(userMoney, userDay) {
+                    return this.services.filter(services => services.cost <= userMoney && services.time <= userDay)
+                }
+                toString() {
+                    return `Фірма ${this.name} <br> Дата заснування ${this.dateFounding} <br> Сервіси ${this.services} <br> Адресса ${this.addresBranches} <br>`
+                }
+            }
+            let dateFounding = new DateFounding(5, 2015)
+            let servicesList = [
+                new Services('Розробка веб-додатку', 5000, 30),
+                new Services('Створення логотипу', 1000, 7),
+                new Services('Налаштування сервера', 3000, 14),
+                new Services('Проведення аудиту безпеки', 2500, 21),
+                new Services('Редизайн сайту', 2000, 14),
+                new Services('Редизайн сайту', 2000, 14),
+                new Services('Розробка мобільного додатку', 7000, 60),
+                new Services('Написання технічної документації', 1500, 7),
+                new Services('Проведення SEO аудиту', 1200, 14),
+                new Services('Настройка рекламної кампанії', 4000, 21),
+                new Services('Розробка електронного магазину', 8000, 45),
+            ]
+            let branches = [
+                new Branches('Україна', 'Київ', 'Володимирська',),
+                new Branches('Україна', 'Львів', 'Січових Стрільців', 20),
+                new Branches('Україна', 'Харків', 'Пушкінська', 30),
+                new Branches('Україна', 'Одеса', 'Дерибасівська', 40),
+                new Branches('Україна', 'Дніпро', 'Карла Маркса', 50),
+                new Branches('США', 'Нью-Йорк', 'Пятнашки', 60),
+                new Branches('США', 'Сан-Франциско', 'Маркет-стріт', 70),
+                new Branches('Канада', 'Торонто', 'Янг-стріт', 80),
+                new Branches('Канада', 'Ванкувер', 'Робсон', 90),
+                new Branches('Великобританія', 'Лондон', 'Оксфорд-стріт', 100)
+            ]
+            const firm = new CompanyList(`EPAM`, dateFounding, servicesList, branches)
+            // document.write(firm.printBranches('Дніпро'))
+            // const serv = firm.printServices(4000, 100)
+            // for (let i = 0; i < serv.length; i++) {
+            //     document.write(`${serv[i]}<br>`)
+            // }
+            console.log(firm.getNumberYearsCompany())
+            console.log(firm.printServices(4000, 60))
+            console.log(firm.printBranches(''))
+        </script>
+    </body>
+
+</html>

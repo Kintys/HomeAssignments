@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 2</title>
+
+    </head>
+
+    <body>
+        <h1>Задача 2. Створити клас TMoney для роботи з грошовими сумами.Сума повинна зберігатися у вигляді доларового еквіваленту.Реалізувати методи додавання / вилучення грошової маси, вказуючи необхідну суму у гривнях, та визначення курсу долара, при якому сума у гривнях збільшиться на 100. Курс долара зберігати в окремому полі.</h1>
+        <script>
+            // Задача 2. Створити клас TMoney для роботи з грошовими сумами.Сума повинна зберігатися у вигляді доларового еквіваленту.Реалізувати методи додавання / вилучення грошової маси, вказуючи необхідну суму у гривнях, та визначення курсу долара, при якому сума у гривнях збільшиться на 100. Курс долара зберігати в окремому полі.
+            class TMoney {
+                #usdRate
+                #balans
+                constructor(initBalans, ExchangeRate) {
+                    this.Balans = initBalans
+                    this.UsdRate = ExchangeRate
+                }
+
+                get Balans() {
+                    return this.#balans
+                }
+                get UsdRate() {
+                    return this.#usdRate
+                }
+
+                set Balans(balans) {
+                    if (balans < 0 || typeof balans === 'string')
+                        throw new Error(`Balans is incorrect`)
+                    this.#balans = balans
+                }
+                set UsdRate(rate) {
+                    if (rate < 0 || typeof rate === 'string')
+                        throw new Error(`UsdRate is incorrect`)
+                    this.#usdRate = rate;
+                }
+                addMoney(hryvnaValue) {
+                    if (hryvnaValue < 0 || typeof rate === 'string')
+                        throw new Error(`Balans is incorrect`)
+                    this.Balans += hryvnaValue / this.UsdRate
+                }
+
+                withdrawMoney(hryvnaValue) {
+                    if (hryvnaValue < 0 || (hryvnaValue / this.UsdRate) > this.UsdRate)
+                        throw new Error(`UsdRate is incorrect`)
+                    this.Balans -= hryvnaValue / this.UsdRate
+                }
+                newExchangeRate() {
+                    const rate = (this.Balans * this.UsdRate + 100) / this.Balans
+                    return `Cума у гривнях збільшиться на 100 при курсі долара: ${rate.toFixed(2)} `
+                }
+
+                toString() {
+                    return `курс долара ${this.UsdRate.toFixed(2)} Рахунок в доларах ${this.Balans.toFixed(2)}<br> `
+                }
+            }
+            let money = new TMoney(1000, 39)
+            document.write(money.toString())
+            money.addMoney(1000)
+            document.write(money.toString())
+            money.withdrawMoney(200)
+            document.write(money.toString())
+            document.write(money.newExchangeRate())
+
+        </script>
+    </body>
+
+</html>
