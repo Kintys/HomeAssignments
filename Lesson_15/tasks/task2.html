@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 2</title>
+
+    </head>
+
+    <body>
+        <script>
+            // Задача 1. Створити об’єкт «Тир». У масиві зберігаються 1, якщо у цьому квадраті є заєць і 0 в іншому випадку.
+            function ShootingGallery() {
+                this.fild = []
+            }
+            ShootingGallery.prototype.getShootingFild = function (rowNumber, arrWeigth, rabbitNumb) {
+                for (let i = 0; i < rowNumber; i++) {
+                    this.fild.push(new Array(arrWeigth).fill(0))
+                }
+                let count = 0
+                while (count !== rabbitNumb) {
+                    let randNub = this.getRandomNumber(0, this.fild.length - 1)
+                    let randNub_2 = this.getRandomNumber(0, rowNumber - 1)
+                    if (this.fild[randNub][randNub_2] === 0) {
+                        this.fild[randNub][randNub_2] = 1
+                        count++
+                    }
+                }
+                return this.fild
+            }
+            ShootingGallery.prototype.getRandomNumber = function (minV, maxV) {
+                return minV + Math.floor(Math.random() * (maxV - minV + 1))
+            }
+            ShootingGallery.prototype.shot = function (userRow, userColm) {
+                if (this.fild[userRow][userColm] === 1) return alert('Ви попали')
+                else return alert(`Пробуйте ще`)
+            }
+            ShootingGallery.prototype.toString = function () {
+                for (let index = 0; index < this.fild.length; index++) {
+                    document.write(`[${this.fild[index]}]<br>`)
+                }
+            }
+            let game = new ShootingGallery()
+            // console.log(game.getShootingFild(5, 10, 5));
+            // game.shot(4, 3)
+            // game.toString()
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 6</title>
+
+    </head>
+
+    <body>
+        <script>
+            // Задача 5. Розробити клас «Керівник танців»
+            class DanceLeader {
+                constructor(arrBoys, arrGirls) {
+                    this.arrBoys = arrBoys
+                    this.arrGirls = arrGirls
+                }
+                getRandomBoy() {
+                    const randomBoy = Math.floor(Math.random() * this.arrBoys.length)
+                    return this.arrBoys[randomBoy]
+                }
+                getRandomGirls() {
+                    const randomGirls = Math.floor(Math.random() * this.arrGirls.length)
+                    return this.
+                        arrGirls[randomGirls]
+                }
+                getDancingPairs() {
+                    return `Пара ${this.getRandomBoy()} - ${this.getRandomGirls()}<br>`
+                }
+                run() {
+                    setInterval(() => {
+                        document.write(this.getDancingPairs())
+                    }, 5000)
+                }
+            }
+            let dance = new DanceLeader(['Олександр', 'Максим', 'Дмитро', 'Андрій', 'Іван', 'Юрій', 'Віталій', 'Михайло', 'Роман', 'Владислав'], ['Анна', 'Софія', 'Марія', 'Катерина', 'Олена', 'Юлія', 'Вікторія', 'Ірина', 'Наталія', 'Оксана'])
+            dance.run()
+
+        </script>
+    </body>
+
+</html>

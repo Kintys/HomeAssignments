@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 1</title>
+
+    </head>
+
+    <body>
+        <script>
+
+            // Задача 0. Дано два об’єкта. Обидва містять масив цілих чисел. При цьому у одному з них є функція знаходження суми, а у іншому – функція для знаходження добутку тих, які знаходяться між заданими мінімальним і максимальних значенням.
+            // Використати обидва методи стосовно обидвох об’єктів(використати call, apply)
+
+            const object_1 = {
+                num: [211, 4156, 553, 6414, 14, 41],
+                findingTheSum: function () {
+                    return this.num.reduce((prevNumb, number) => prevNumb + number)
+                },
+            }
+            const object_2 = {
+                num: [4431, 4156, 41453, 514, 1424, 4331],
+                findProduct: function (minNumber, maxNumber) {
+                    return this.num.reduce((prevNum, number) =>
+                        number >= minNumber && number <= maxNumber ? prevNum * number : prevNum
+                        , 1)
+                }
+            }
+            let showProductTheFirst_Obj = object_2.findProduct.call(object_1, 4000, 7000)
+
+            let showProductTheFirstWithApply_Obj = object_2.findProduct.apply(object_1, [1000, 5000])
+
+            let showSunmTheSecond_Obj = object_1.findingTheSum(object_2)
+
+            document.write(`Добуток першого об'єкту ${showProductTheFirst_Obj}<br>
+            Сума другого об'єкту ${showSunmTheSecond_Obj} <br>`)
+
+        </script>
+    </body>
+
+</html>
