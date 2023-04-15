@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 4</title>
+
+    </head>
+
+    <body>
+        <h1>Склад. База товарів, які зберігаються на складі: назва товару, одиниця виміру, кількість, фірма виробник (назва, реєстраційний номер). Організувати реєстрацію/відвантаження товарів, фільтрація за назвою товару, фільтрація за назвою фірми</h1><br>
+        <script>
+            // Склад. База товарів, які зберігаються на складі: назва товару, одиниця виміру, кількість, фірма виробник (назва, реєстраційний номер). Організувати реєстрацію/відвантаження товарів, фільтрація за назвою товару, фільтрація за назвою фірми
+            class Random {
+                static generateArr(userLength, userMin, userMax) {
+                    let array = [];
+                    for (let i = 0; i < userLength; i++) {
+                        let randomNum = userMin + Math.floor(Math.random() * (userMax - userMin + 1));
+                        array.push(randomNum);
+                    }
+                    return array;
+                }
+                static randomNumber(userMin, userMax) {
+                    return userMin + Math.floor(Math.random() * (userMax - userMin + 1));
+                }
+            }
+
+            class Manufacturer {
+                constructor(initName) {
+                    this.title = initName
+                    this.id = `${new Date().getFullYear()}_${Random.randomNumber(10000, 99999)}`
+                }
+
+                toString() {
+                    return `Назва виробника "${this.title}" <br>  Зеєстраційний номер "${this.id}" <br> `
+                }
+            }
+
+            class Product {
+                constructor(name, unit, quantity, manufacturer) {
+                    this.name = name
+                    this.unit = unit
+                    this.quantity = quantity
+                    this.manufacturer = manufacturer
+                }
+                toString() {
+                    return `Назва "${this.name}" <br> ${this.unit} = ${this.quantity} <br> ${this.manufacturer}<br> `
+                }
+            }
+
+
+
+            class Warehouse {
+                constructor() {
+                    this.product = []
+                }
+
+                registrationProduct(name, unit, quantity, manufacturer,) {
+                    let newManufacturer = new Manufacturer(manufacturer)
+                    let product = new Product(name, unit, quantity, newManufacturer)
+                    this.product.push(product)
+                }
+
+
+                shipProduct(UserNameProduct, quantity) {
+                    const productIndex = this.product.findIndex(product => product.name === UserNameProduct)
+                    if (productIndex !== - 1) {
+                        const product = this.product[productIndex]
+                        if (product.quantity >= quantity)
+                            product.quantity -= quantity
+                        else alert(`Нa складі недостатньо товару ${UserNameProduct} `)
+                    }
+                    else alert(`Товар ${UserNameProduct} не знайдено на складі`)
+                }
+
+
+
+
+                filterByName(name) {
+                    return this.product.filter(product => product.name === name)
+                }
+
+
+                filterByManuFacturer(manuFacturer) {
+                    return this.product.filter(product => product.manufacturer.title === manuFacturer)
+                }
+
+
+                toString() {
+                    return `${this.product}`
+                }
+
+
+            }
+            let warehouse = new Warehouse();
+            warehouse.registrationProduct('Папір A4', 'упаковка', 50, 'Альянс')
+            warehouse.registrationProduct('Ручка гелева', 'штук', 100, 'Паркер')
+            warehouse.registrationProduct("Ключ для автомобіля", "штук", 350, "Tesla")
+            warehouse.registrationProduct("Футбольний м'яч", "штук", 100, "Adidas")
+            warehouse.registrationProduct("Чашка для кави", "штук", 50, "Starbucks")
+            warehouse.registrationProduct("Навушники", "штук", 1500, "Bose")
+
+            console.log(warehouse)
+
+            warehouse.shipProduct(`Ручка гелева`, 24)
+
+            document.write(warehouse.filterByName('Ручка гелева'))
+            document.write(warehouse.filterByManuFacturer("Tesla"))
+        </script>
+        <main>
+        </main>
+    </body>
+
+</html>

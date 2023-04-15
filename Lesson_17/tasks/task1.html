@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 1</title>
+
+    </head>
+
+    <body>
+        <main>
+            <h1>Створити клас, що дозволяє виконувати такі операції над масивами: знаходження кількості додатних, кількості від’ємних, кількість входжень деякого числа (статичні методи)</h1><br>
+        </main>
+        <script>
+            //  Створити клас, що дозволяє виконувати такі операції над масивами: знаходження кількості додатних, кількості від’ємних, кількість входжень деякого числа (статичні методи)
+            class Random {
+                static generateArr(userLength, userMin, userMax) {
+                    let array = [];
+                    for (let i = 0; i < userLength; i++) {
+                        let randomNum = userMin + Math.floor(Math.random() * (userMax - userMin + 1));
+                        array.push(randomNum);
+                    }
+                    return array;
+                }
+                static randomNumber(userMin, userMax) {
+                    return userMin + Math.floor(Math.random() * (userMax - userMin + 1));
+                }
+            }
+            class myArray {
+                static countPositivity = 0
+                static countNegative = 0
+                static countNumber = 0
+                static numberOfSpaces(userArr) {
+                    for (const num of userArr) {
+                        if (num > 0) myArray.countPositivity++
+                    }
+                    return myArray.countPositivity
+                }
+                static numberOfNegative(userArr) {
+                    for (const num of userArr) {
+                        if (num < 0) myArray.countNegative++
+                    }
+                    return myArray.countNegative
+                }
+                static numberFinding(userArr, userNumber) {
+                    for (const num of userArr) {
+                        if (num === userNumber)
+                            myArray.countNumber++
+                    }
+                    return myArray.countNumber
+                }
+                static printNumberFound() {
+                    return `Кількість додатніх ${myArray.countPositivity} <br>
+                            Кількість від'ємних ${myArray.countNegative} <br>
+                            Кількість знаходженя цисла ${myArray.countNumber}`
+                }
+            }
+            const newArr = Random.generateArr(20, -100, 100)
+            const randNum = Random.randomNumber(0, 20)
+            console.log(newArr)
+            console.log(randNum)
+            console.log(myArray.numberFinding(newArr, randNum))
+            console.log(myArray.numberOfSpaces(newArr));
+            console.log(myArray.numberOfNegative(newArr));
+            document.write(myArray.printNumberFound())
+        </script>
+    </body>
+
+</html>

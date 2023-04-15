@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 5</title>
+
+    </head>
+
+    <body>
+        <h1>Особиста бібліотека. Картотека домашньої бібліотеки: дані книги (автори (піб, рік народження, короткий опис), назва книги, жанр, видавництво (назва, реєстраційний номер, рік засування)). Реалізувати розділи бібліотеки (спеціальна література, хобі, домашнє господарство і т.д.), походження книги і наявність на даний час. Організувати додавання/вилучення книг та вибір книг за назвою, за ПІБ автора, за видавництвом.
+        </h1><br>
+        <script>
+            // Особиста бібліотека. Картотека домашньої бібліотеки: дані книги (автори (піб, рік народження, короткий опис), назва книги, жанр, видавництво (назва, реєстраційний номер, рік засування)). Реалізувати розділи бібліотеки (спеціальна література, хобі, домашнє господарство і т.д.), походження книги і наявність на даний час. Організувати додавання/вилучення книг та  вибір книг за назвою, за ПІБ автора, за видавництвом.
+            class Random {
+                static generateArr(userLength, userMin, userMax) {
+                    let array = [];
+                    for (let i = 0; i < userLength; i++) {
+                        let randomNum = userMin + Math.floor(Math.random() * (userMax - userMin + 1));
+                        array.push(randomNum);
+                    }
+                    return array;
+                }
+                static randomNumber(userMin, userMax) {
+                    return userMin + Math.floor(Math.random() * (userMax - userMin + 1));
+                }
+            }
+            class Author {
+                constructor({ firstName, surName, yearOfBirth, briefDescription }) {
+                    this.firstName = firstName
+                    this.surName = surName
+                    this.yearOfBirth = yearOfBirth
+                    this.briefDescription = briefDescription
+                }
+
+                toString() {
+                    return `${this.firstName} ${this.surName}  <br>
+                            ${this.yearOfBirth} <br>
+                            ${this.briefDescription}<br>`
+                }
+            }
+
+            class Publication {
+                constructor({ titlePublicat, introduction }) {
+                    this.titlePublicat = titlePublicat
+                    this.introduction = introduction
+                    this.id = `${new Date().getDay()}_${Random.randomNumber(1000, 9999)}`
+                }
+                toString() {
+                    return `${this.titlePublicat} ${this.id} ${this.introduction}`
+                }
+            }
+            class Book {
+                constructor({ authors, titleBook, genre, publication }) {
+                    this.authors = new Author(authors)
+                    this.titleBook = titleBook
+                    this.genre = genre
+                    this.publication = new Publication(publication)
+                }
+                toString() {
+                    return `
+                    ${this.authors} <br>
+                    ${this.titleOfBook} <br> 
+                    ${this.genre}  <br>
+                    ${this.publication}<br>`
+                }
+            }
+            class Library {
+                constructor(bookList) {
+                    this.library = new Array(bookList)
+                }
+                addBook(userBook) {
+                    this.library.push(userBook)
+                }
+                removeBook(userBook) {
+                    const index = this.library.findIndex(el => el.titleBook === userBook)
+                    this.library.splice(index, 1)
+                }
+                isBookInLibrar(usertitle) {
+                    return this.library.find(el => el.titleBook === usertitle) ? true : false
+                }
+                findByAuthor(author) {
+                    for (const book of this.library) {
+                        if (book.authors.firstName === author || book.authors.surName === author) return book
+                    }
+                }
+                findBooksByPublication(userPublication) {
+                    for (const book of this.library) {
+                        if (book.publication.titlePublicat === userPublication) return book
+                    }
+                }
+                toString() {
+                    return `${this.library} `
+                }
+            }
+            const book = new Book(
+                {
+                    authors: {
+                        firstName: 'Mark',
+                        surName: 'Twen',
+                        yearOfBirth: 1835,
+                        briefDescription: 'An American writer, humorist, entrepreneur, publisher, and lecturer.'
+                    },
+                    titleBook: 'The Adventures of Tom Sawyer',
+                    genre: 'Fiction',
+                    publication: {
+                        titlePublicat: 'Penguin Random House',
+                        introduction: 1927
+                    }
+                }
+            )
+            let library = new Library(book)
+            const book2 = new Book(
+                {
+                    authors: {
+                        firstName: 'Joanne',
+                        surName: 'Rowling',
+                        yearOfBirth: 1965,
+                        briefDescription: 'An English novelist, essayist, journalist, and critic.'
+                    },
+                    titleBook: 'Harry Potter',
+                    genre: 'Fiction',
+                    publication: {
+                        titlePublicat: 'Yakaboo',
+                        introduction: 1995
+                    }
+                }
+            )
+            const book3 = new Book(
+                {
+                    authors: {
+                        firstName: 'Harper',
+                        surName: 'Lee',
+                        yearOfBirth: 1926,
+                        briefDescription: 'An American novelist and screenwriter.'
+                    },
+                    titleBook: 'To Kill a Mockingbird',
+                    genre: 'Fiction',
+                    publication: {
+                        titlePublicat: 'J. B. Lippincott & Co.',
+                        introduction: 1960
+                    }
+                }
+            )
+            library.addBook(book2)
+            library.addBook(book2)
+            library.addBook(book3)
+            // library.removeBook('Harry Potter')
+            // console.log(library.findByAuthor('Rowling'))
+            // console.log(library.findBooksByPublication('J. B. Lippincott & Co.'))
+            // console.log(library.isBookInLibrar('The Adventures of Tom Sawyer'))
+            console.log(library)
+        </script>
+        <main>
+        </main>
+    </body>
+
+</html>
