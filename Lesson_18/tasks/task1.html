@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 1</title>
+        <style>
+            .calculator__body {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .button {
+                padding: 10px 10px 10px 10px;
+                font-size: 20px;
+            }
+
+            #first,
+            #second,
+            #result {
+                padding: 5px 5px 5px 5px;
+                font-size: 18px;
+            }
+        </style>
+    </head>
+    <script>
+        function getSum() {
+            const firstNumber = parseInt(document.getElementById(`first`).value)
+            const secondNumber = parseInt(document.getElementById(`second`).value)
+            const result = firstNumber + secondNumber
+            document.getElementById(`result`).value = result
+        }
+        function getSub() {
+            const firstNumber = parseInt(document.getElementById(`first`).value)
+            const secondNumber = parseInt(document.getElementById(`second`).value)
+            const result = firstNumber - secondNumber
+            document.getElementById(`result`).value = result
+        }
+        function getMult() {
+            const firstNumber = parseInt(document.getElementById(`first`).value)
+            const secondNumber = parseInt(document.getElementById(`second`).value)
+            const result = firstNumber * secondNumber
+            document.getElementById(`result`).value = result
+        } function getDiv() {
+            const firstNumber = parseInt(document.getElementById(`first`).value)
+            const secondNumber = parseInt(document.getElementById(`second`).value)
+            const result = firstNumber / secondNumber
+            document.getElementById(`result`).value = result
+        }
+        window.onload = function () {
+            document.getElementById(`add`).onclick = getSum
+            document.getElementById(`subtract`).onclick = getSub
+            document.getElementById(`multiply`).onclick = getMult
+            document.getElementById(`share`).onclick = getDiv
+        }
+    </script>
+
+    <body>
+        <main>
+            <section class="calculator">
+                <div class="calculator__body">
+                    <h1>Задача 1. Розробити калькулятор</h1>
+                    <label>
+                        First number
+                        <input type="number" placeholder="0" id="first" class="calculator__input">
+                    </label>
+                    <label>
+                        Second number
+                        <input type="number" placeholder="0" id="second" class="calculator__input">
+                    </label>
+                    <div>
+                        <button id="add" class="button">Додати</button>
+                        <button id="subtract" class="button">Відняти</button>
+                        <button id="multiply" class="button">Помножити</button>
+                        <button id="share" class="button">Поділити</button>
+                    </div>
+
+                    <label>
+                        Результат
+                        <input type="number" placeholder="0" id="result" class="calculator__input">
+                    </label>
+                </div>
+            </section>
+        </main>
+
+    </body>
+
+</html>

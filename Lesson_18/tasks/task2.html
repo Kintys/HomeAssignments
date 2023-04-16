@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 2</title>
+        <style>
+            .corvert {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .corvert__input {
+                padding: 3px 3px;
+            }
+
+            button {
+                padding: 10px 10px;
+                font-size: 18px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <main class="corvert">
+            <label>
+                Сума в гривнях
+                <input placeholder="0" class="corvert__input value">
+            </label>
+            <button onclick="corvert()">Конвектор</button>
+            <label>
+                Сума в євро
+                <input placeholder="0" class="corvert__input sum__eur">
+            </label>
+            <label>
+                Сума в доларах
+                <input placeholder="0" class="corvert__input sum__usd">
+            </label>
+
+        </main>
+        <script>
+
+            function corvert() {
+                const eur = 41
+                const usd = 38
+                let hryvnaValue = document.querySelector(`.value`).value
+                let resulEur = hryvnaValue / eur
+                let resulUsd = hryvnaValue / usd
+                document.querySelector(`.sum__eur`).value = resulEur.toFixed(2)
+                document.querySelector(`.sum__usd`).value = resulUsd.toFixed(2)
+            }
+        </script>
+    </body>
+
+</html>

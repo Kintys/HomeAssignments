@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 6</title>
+
+    </head>
+    <style>
+        .grades {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: flex-start;
+        }
+
+        .input {
+            padding: 5px;
+            font-size: 18px;
+        }
+
+        .button {
+            font-size: 18px;
+            padding: 10px;
+        }
+
+        tr {
+            display: flex;
+            gap: 10px;
+        }
+
+        .sum-input {
+            padding: 6px;
+        }
+    </style>
+
+    <body>
+        <main>
+
+            <div class="grades">
+                <h1>
+                    Задача 6. Користувач задає кількість оцінок і натискає на кнопку «get table». В результаті формується таблиця з input, куди користувач вводить оцінки. Після цього натискає на кнопку “get sum” і знаходить середнє значення.
+                </h1>
+                <label>
+                    Price number
+                    <input type="number" class="input">
+                </label>
+                <button onclick="school.renderTablet()" class="button button-table">get table</button>
+                <button onclick="school.arithmeticMean()" class="button button-sum">get sum</button>
+            </div>
+        </main>
+        <script>
+            class Grades {
+                tablet() {
+                    const table = document.createElement(`table`)
+                    document.querySelector(`.button-table`).after(table)
+                    const tr = document.createElement(`tr`)
+                    table.append(tr)
+                    for (let c = 0; c < this.inputNumber; c++) {
+                        const td = document.createElement(`td`)
+                        const inp = document.createElement(`input`)
+                        inp.className = `sum-input`
+                        inp.type = `number`
+                        tr.append(td)
+                        td.append(inp)
+                    }
+                }
+                arithmeticMean() {
+                    let sum = 0
+                    const valueInp = document.querySelectorAll(`.sum-input`)
+                    console.log(valueInp)
+                    for (const inp of valueInp) {
+                        sum += parseInt(inp.value)
+                        // console.log(sum)
+                    }
+                    const totalSum = sum / valueInp.length
+                    const span = document.createElement(`span`)
+                    span.innerText = totalSum
+                    document.querySelector(`.button-sum`).after(span)
+                }
+                renderTablet() {
+                    this.inputNumber = document.querySelector(`.input`).value
+                    this.tablet()
+                }
+            }
+            let school = new Grades()
+        </script>
+    </body>
+
+</html>

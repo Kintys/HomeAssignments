@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 4</title>
+
+    </head>
+
+    <body>
+        <script>
+            class Goals {
+                constructor(arr) {
+                    this.arr = [...arr]
+                }
+                randomIndex() {
+                    return Math.floor(Math.random() * this.arr.length)
+                }
+                randomGoals() {
+                    const index = this.randomIndex()
+                    const randomGoals = this.arr[index]
+                    const newDiv = document.createElement(`div`)
+                    newDiv.innerText = `${randomGoals}`
+                    document.getElementsByTagName(`main`)[0].append(newDiv)
+                }
+            }
+            window.onload = function () {
+                const newGoals = new Goals(g)
+                for (let i = 0; i < 3; i++) {
+                    newGoals.randomGoals()
+                }
+            }
+            const g = ['Подорожувати світом та досліджувати різні культури і традиції.',
+                'Навчитися грати на музичному інструменті або розвинути свої вміння в співі.',
+                'Поліпшити своє здоров\'я та форму через здорове харчування, фітнес чи йогу.',
+                'Відкрити власний бізнес та реалізувати свої підприємницькі ідеї.',
+                'Навчитися новій мові та стати білінгвом або мультилінгвом.',
+                'Написати книгу, зняти фільм або створити свій власний художній проект.',
+                'Знайти роботу, яка принесе задоволення та визнання, а не тільки гроші.',
+                'Поліпшити свої навички в області різних технологій та програмування.',
+                'Знайти кохання та створити щасливу родину.',
+                'Допомогти іншим людям та зробити світ кращим місцем для життя.']
+        </script>
+        <main>
+            <h1>Задача 4. Наперед задано у скрипті масив зі списком бажань. Після завантаження сторінки випадковим чином вибираються 3 і відображаються у окремих div (їх треба створити і додати на сторінку)
+            </h1><br>
+        </main>
+    </body>
+
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 7</title>
+
+    </head>
+    <style>
+        .trip-lists {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: flex-start;
+            padding: 15px;
+        }
+
+        .select__body {
+            width: 200px;
+            font-size: 18px;
+            padding: 7px;
+        }
+
+        .button {
+            padding: 15px;
+            font-size: 20px;
+            width: 200px;
+        }
+    </style>
+
+    <body>
+        <main>
+            <div class="trip-lists">
+                <h1>
+                    Задача 7. Подорож складається з 3 етапів. На кожному етапі користувач може вибрати один з видів транспорту
+                    (авто,
+                    автобус, літак - випадаючий список), харчування (сніданок, обід, вечеря – checkbоx) та одного з 3-х
+                    гідів(використати -
+                    radio buttons). Ціни визначте самі. Підрахувати загальну вартість.
+                </h1>
+                <div class="select">
+                    <select class="select__body">
+                        <option value="350">авто (350)</option>
+                        <option value="200">автобус (200)</option>
+                        <option value="1000">літак (1000)</option>
+                    </select>
+                </div>
+                <div class="check-box">
+                    <input class="check-box__item" type="checkbox" value="100">
+                    <label>Сніданок (100)</label><br>
+                    <input class="check-box__item" type="checkbox" value="150">
+                    <label>Обід (150)</label><br>
+                    <input class="check-box__item" type="checkbox" value="200">
+                    <label>Вечеря (200)</label><br>
+                </div>
+                <div class="radio-buttons">
+                    <input class="radio-buttons__item" type="radio" value="200">
+                    <label>Олег (200)</label><br>
+                    <input class="radio-buttons__item" type="radio" value="300">
+                    <label>Ігорь (300)</label><br>
+                    <input class="radio-buttons__item" type="radio" value="1000">
+                    <label>Сусід Іван (1000)</label>
+                </div>
+                <button id="result" class="button">total sum</button>
+            </div>
+        </main>
+        <script>
+            class Trip {
+                constructor(initData) {
+                    Object.assign(this, initData)
+                }
+                getCheckBoxSum() {
+                    let sum = 0
+                    for (const inp of this.checkBoxList) {
+                        if (inp.checked) sum += parseInt(inp.value)
+                    }
+                    return sum
+                }
+                getRadioSum() {
+                    let sum = 0
+                    for (const radio of this.radioList) {
+                        if (radio.checked) sum += parseInt(radio.value)
+                    }
+                    return sum
+                }
+                renderTotalSum() {
+                    let totalSum = this.selectSum + this.getRadioSum() + this.getCheckBoxSum()
+                    const p = document.createElement(`p`)
+                    p.innerText = totalSum
+                    document.querySelector(".button").after(p)
+                }
+            }
+
+
+            document.querySelector(`#result`).onclick = () => {
+                const userTripList = {
+                    checkBoxList: document.querySelectorAll(`.check-box__item`),
+                    radioList: document.querySelectorAll(`.radio-buttons__item`),
+                    selectSum: parseInt(document.querySelector(`.select__body`).value)
+                }
+                const newTrip = new Trip(userTripList).renderTotalSum()
+            }
+        </script>
+    </body>
