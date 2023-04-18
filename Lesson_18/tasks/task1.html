@@ -27,37 +27,6 @@
             }
         </style>
     </head>
-    <script>
-        function getSum() {
-            const firstNumber = parseInt(document.getElementById(`first`).value)
-            const secondNumber = parseInt(document.getElementById(`second`).value)
-            const result = firstNumber + secondNumber
-            document.getElementById(`result`).value = result
-        }
-        function getSub() {
-            const firstNumber = parseInt(document.getElementById(`first`).value)
-            const secondNumber = parseInt(document.getElementById(`second`).value)
-            const result = firstNumber - secondNumber
-            document.getElementById(`result`).value = result
-        }
-        function getMult() {
-            const firstNumber = parseInt(document.getElementById(`first`).value)
-            const secondNumber = parseInt(document.getElementById(`second`).value)
-            const result = firstNumber * secondNumber
-            document.getElementById(`result`).value = result
-        } function getDiv() {
-            const firstNumber = parseInt(document.getElementById(`first`).value)
-            const secondNumber = parseInt(document.getElementById(`second`).value)
-            const result = firstNumber / secondNumber
-            document.getElementById(`result`).value = result
-        }
-        window.onload = function () {
-            document.getElementById(`add`).onclick = getSum
-            document.getElementById(`subtract`).onclick = getSub
-            document.getElementById(`multiply`).onclick = getMult
-            document.getElementById(`share`).onclick = getDiv
-        }
-    </script>
 
     <body>
         <main>
@@ -73,12 +42,11 @@
                         <input type="number" placeholder="0" id="second" class="calculator__input">
                     </label>
                     <div>
-                        <button id="add" class="button">Додати</button>
-                        <button id="subtract" class="button">Відняти</button>
-                        <button id="multiply" class="button">Помножити</button>
-                        <button id="share" class="button">Поділити</button>
+                        <button id="add" onclick="getSum('add')" class="button">Додати</button>
+                        <button id="subtract" onclick="getSum('subtract')" class="button">Відняти</button>
+                        <button id="multiply" onclick="getSum('multiply')" class="button">Помножити</button>
+                        <button id="divide" onclick="getSum('divide')" class="button">Поділити</button>
                     </div>
-
                     <label>
                         Результат
                         <input type="number" placeholder="0" id="result" class="calculator__input">
@@ -86,7 +54,29 @@
                 </div>
             </section>
         </main>
-
+        <script>
+            function getSum(operation) {
+                const firstNumber = parseInt(document.getElementById(`first`).value)
+                const secondNumber = parseInt(document.getElementById(`second`).value)
+                switch (operation) {
+                    case 'add':
+                        result = firstNumber + secondNumber
+                        break
+                    case 'subtract':
+                        result = firstNumber - secondNumber
+                        break
+                    case 'multiply':
+                        result = firstNumber * secondNumber
+                        break
+                    case 'divide':
+                        result = firstNumber / secondNumber
+                        break
+                    default:
+                        result = 0
+                }
+                document.getElementById(`result`).value = result
+            }
+        </script>
     </body>
 
 </html>
