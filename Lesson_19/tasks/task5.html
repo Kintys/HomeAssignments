@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 5</title>
+
+    </head>
+    <style>
+        .container {
+            position: relative;
+            height: 500px;
+        }
+
+        .field {
+            position: absolute;
+            top: -100px;
+            left: 0;
+        }
+
+        .game {
+            position: relative;
+
+        }
+
+        .tank {
+            background: url('../img/tank.png') 0 0 / 250px 150px no-repeat;
+            width: 200px;
+            height: 200px;
+            transform: rotate(-90deg);
+            position: absolute;
+        }
+
+        .explosion {
+            background: url('../img/ex-removebg-preview.png') 0 0 / cover no-repeat;
+            width: 200px;
+            height: 200px;
+            z-index: 2;
+            position: absolute;
+            top: -70px;
+            left: -50px;
+            display: none;
+        }
+    </style>
+
+    <body>
+        <main class="container">
+
+        </main>
+        <script>
+            // 
+            class Bayraktar {
+                constructor(heightContainer) {
+                    this.heightContainer = heightContainer
+                }
+                getRandomNumber(min, max) {
+                    return min + Math.floor(Math.random() * (max + min - 1))
+                }
+                getMoveTank() {
+                    let timer = setInterval(() => {
+                        if (parseInt(this.field.style.top) > this.heightContainer) {
+                            alert(`you lost`)
+                        }
+                        else this.field.style.top = this.field.offsetTop + 5 + "px"
+                    }, 100)
+
+                }
+
+                shotTank() {
+                    this.field.addEventListener("click", (event) => {
+                        this.explosionContainer.style.display = "block"
+                        setTimeout(() => {
+                            this.explosionContainer.style.display = "none"
+                            event.target.closest(".field").remove()
+                        }, 200)
+                    })
+
+
+                }
+                randomTankPosition(targetSection) {
+                    this.container = document.querySelector(targetSection)
+
+                    this.field = document.createElement("div")
+                    this.field.className = "field"
+                    this.field.style.cssText = `left:${this.getRandomNumber(1, 99)}%;`
+
+
+
+                    const gameContainer = document.createElement("div")
+                    gameContainer.className = "game"
+                    const tankContainer = document.createElement('div')
+                    tankContainer.className = "tank"
+                    gameContainer.append(tankContainer)
+
+                    this.explosionContainer = document.createElement("div")
+                    this.explosionContainer.className = "explosion"
+                    gameContainer.append(this.explosionContainer)
+
+                    this.field.append(gameContainer)
+                    this.container.append(this.field)
+
+                    this.getMoveTank()
+                    this.shotTank()
+                }
+            }
+            window.onload = function () {
+                setInterval(() => {
+                    let r = new Bayraktar(600).randomTankPosition(".container")
+                }, 1000);
+
+            }
+
+
+
+
+        </script>
+    </body>
+
+</html>

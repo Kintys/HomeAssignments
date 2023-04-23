@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./css/style.css">
+        <title>Завдання 2 додаткове</title>
+        <style>
+            /* .cards {
+                display: flex;
+            }
+
+            .card-container {
+                width: 50px;
+                height: 80px;
+                margin: 10px;
+                background-color: rgba(9, 124, 101, 0.587);
+            }
+
+            .img-container {
+                width: 50px;
+                height: 50px;
+                border-radius: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .card-img {
+                width: 30px;
+            }
+
+            .card-title {
+                font-size: 14px;
+                text-align: center;
+            } */
+        </style>
+        <script>
+            // class LinkCard {
+            //     constructor({ img, title, link }) {
+            //         this.img = img
+            //         this.title = title
+            //         this.link = link
+            //     }
+            //     render(containerSelector) {
+            //         const cardContainer = document.createElement("div")
+            //         cardContainer.className = `card-container`
+
+            //         const imageContainer = document.createElement("div")
+            //         imageContainer.className = "img-container"
+            //         cardContainer.append(imageContainer)
+
+
+            //         const titleContainer = document.createElement("div")
+            //         titleContainer.className = "card-title"
+
+            //         const cardLink = document.createElement("a")
+            //         cardLink.href = this.link
+            //         cardLink.innerText = this.title
+            //         titleContainer.append(cardLink)
+            //         cardContainer.append(titleContainer)
+
+            //         const img = document.createElement("img")
+            //         img.className = `card-img`
+            //         img.src = this.img
+            //         imageContainer.append(img)
+
+            //         const targetContainer = document.querySelector(containerSelector)
+            //         targetContainer.append(cardContainer)
+            //     }
+            // }
+            // const card = [
+            //     {
+            //         img: "../img/img1.png",
+            //         title: "diamond",
+            //         link: "https://diamond.pl/"
+            //     },
+            //     {
+            //         img: "../img/img2.png",
+            //         title: "banana",
+            //         link: "https://pl.wikipedia.org/wiki/Banan_(owoc)"
+            //     },
+            //     {
+            //         img: "../img/img3.png",
+            //         title: "cherry",
+            //         link: "https://www.filmweb.pl/film/Cherry%3A+Niewinno%C5%9B%C4%87+utracona-2021-835425"
+            //     },
+            //     {
+            //         img: "../img/img4.png",
+            //         title: "grapes",
+            //         link: "https://pl.pons.com/t%C5%82umaczenie/polski-angielski/winogrono"
+            //     },
+            // ]
+            // window.onload = function () {
+            //     for (const lickData of card) {
+            //         new LinkCard(lickData).render(`.cards`)
+            //     }
+            // }
+            class Tester {
+                constructor(questionList) {
+                    this.questionList = questionList
+                    this.currentQuestion = null
+                    this.history = []
+
+                }
+                getRandomQuestions() {
+                    const randIndex = Math.floor(Math.random() * this.questionList.length)
+                    const questionObj = this.questionList[randIndex]
+                    this.questionList.splice(randIndex, 1)
+                    return questionObj
+                }
+
+                optionClick(optId) {
+                    alert(optId === this.currentQuestion.correctAnswerId)
+                    const userAnswer = this.currentQuestion.options.find(item => item.id === optId).text
+                    const correctAnswer = this.currentQuestion.options.find(item => item.id === this.currentQuestion.correctAnswerId).text
+                    this.history.push(
+                        {
+                            question: this.currentQuestion.question,
+                            userAnswer,
+                            correctAnswer,
+                        })
+                    this.next()
+                }
+                renderQuestionListForm() {
+                    const questionContainer = document.createElement('div')
+                    questionContainer.className = "question-container"
+
+                    const questionTextContainer = document.createElement("h3")
+                    questionTextContainer.innerText = this.currentQuestion.question
+                    questionContainer.append(questionTextContainer)
+
+                    const optionsContainer = document.createElement("ol")
+                    for (const opt of this.currentQuestion.options) {
+                        const li = document.createElement("li")
+                        li.innerText = opt.text
+                        li.onclick = this.optionClick.bind(this, opt.id)
+                        optionsContainer.append(li)
+                    }
+                    questionContainer.append(optionsContainer)
+
+                    return questionContainer
+                }
+                getTableRow(dataArray, elTag = "td") {
+                    const tr = document.createElement("tr")
+                    for (const el of dataArray) {
+                        const td = document.createElement(elTag)
+                        td.innerText = el
+                        tr.append(td)
+                    }
+                    return tr
+                }
+                renderResultTable() {
+                    const table = document.createElement("table")
+                    const header = this.getTableRow(['Запитання', 'Відповідь', 'Правильна відповідь',], "th")
+                    table.append(header)
+                    for (const testRes of this.history) {
+                        const row = this.getTableRow([testRes.question, testRes.userAnswer, testRes.correctAnswer])
+                        table.append(row)
+                    }
+                    return table
+                }
+                render(containerId) {
+                    const testerContainer = document.createElement("div")
+                    this.questionFormContainer = document.createElement("div")
+
+                    this.historyContainer = document.createElement("div")
+
+                    testerContainer.append(this.questionFormContainer)
+                    testerContainer.append(this.historyContainer)
+                    const targetContainer = document.getElementById(containerId)
+                    targetContainer.append(testerContainer)
+                    this.next()
+                }
+                next() {
+                    this.currentQuestion = this.getRandomQuestions()
+                    this.questionFormContainer.innerHTML = ''
+                    this.questionFormContainer.append(this.renderQuestionListForm())
+                    this.historyContainer.innerHTML = ''
+                    this.historyContainer.append(this.renderResultTable())
+                }
+            }
+
+
+
+
+            const testSet = [
+                {
+                    question: 'Де найкращий шовдарь?',
+                    options: [
+                        {
+                            id: 1,
+                            text: 'Закарпаття',
+                        },
+                        {
+                            id: 2,
+                            text: 'Чернівці',
+                        },
+                        {
+                            id: 3,
+                            text: 'Львів',
+                        },
+                    ],
+                    correctAnswerId: 1,
+                },
+                {
+                    question: 'Хто є найбільш надійною людиною?',
+                    options: [
+                        {
+                            id: 1,
+                            text: 'Ілон Маск',
+                        },
+                        {
+                            id: 2,
+                            text: 'Білл Гейтс',
+                        },
+                        {
+                            id: 3,
+                            text: 'Сусід Іван',
+                        },
+                    ],
+                    correctAnswerId: 3,
+                },
+                {
+                    question: 'Який транспортний засіб є найшвидшим?',
+                    options: [
+                        {
+                            id: 1,
+                            text: 'Ракета Ілона Маска',
+                        },
+                        {
+                            id: 2,
+                            text: 'Гіперзвукова ракета останньої моделі',
+                        },
+                        {
+                            id: 3,
+                            text: 'Маршрутка сусіда Івана',
+                        },
+                    ],
+                    correctAnswerId: 3,
+                },
+                {
+                    question: 'Який з напоїв є найбільш цінним ?',
+                    options: [
+                        {
+                            id: 1,
+                            text: 'Джин з 10 роками витримки',
+                        },
+                        {
+                            id: 2,
+                            text: 'Настоянка сусіда Івана',
+                        },
+                        {
+                            id: 3,
+                            text: 'Вино з 25 роками витримки',
+                        },
+                    ],
+                    correctAnswerId: 2,
+                },
+            ]
+            window.onload = function () {
+                const t1 = new Tester(testSet)
+                t1.render("container")
+            }
+        </script>
+    </head>
+
+    <body>
+        <div id="container"></div>
+    </body>
+
+</html>

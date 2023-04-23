@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 4</title>
+
+    </head>
+    <style>
+        .container {
+            position: relative;
+            background: url('../img/03.jpg') 0 0 / cover no-repeat;
+        }
+
+        .star {
+            position: absolute;
+            background: url('../img/zvezda.png') 0 0 / 30px 30px no-repeat;
+            width: 30px;
+            height: 30px;
+        }
+    </style>
+
+    <body>
+        <main class="container">
+        </main>
+        <script>
+            // Задача 4. Сяючі зорі. Вказана кількість зірочок повинна з’являтися у випадковій частині екрану. Кожна зірка з певним кроком і інтервалом збільшується від мінімального до максимального розміру. Як тільки досягнути максимального розміру зірочка повинна з’являтися у іншій випадковій позиції.
+            const userNumerStar = parseInt(prompt(`Введіть кількіст зірок`))
+            class ShiningStars {
+                constructor(minSize, maxSize, userNumber) {
+                    this.minSize = minSize
+                    this.maxSize = maxSize
+                    this.userNamber = userNumber
+                }
+                getRandomNumber(min, max) {
+                    return min + Math.floor(Math.random() * (max + min - 1))
+                }
+                randomStarsPositions(container) {
+                    const star = document.createElement("div")
+                    star.className = "star"
+                    star.style.cssText = `
+                    top: ${this.getRandomNumber(1, 100)}%;
+                    left: ${this.getRandomNumber(1, 100)}%;
+                    transform: scale(${this.minSize});
+                    
+                `
+                    let size = this.minSize
+                    let timer = setInterval(() => {
+                        if (size > this.maxSize) {
+                            star.remove()
+                        } else star.style.transform = `scale(${size += 0.1})`
+                    }, this.getRandomNumber(50, 100))
+                    container.append(star)
+                }
+                render(targetSelector) {
+                    const container = document.querySelector(targetSelector)
+                    container.style.height = document.documentElement.clientHeight + "px"
+
+                    let timerRender = setInterval(() => {
+                        this.randomStarsPositions(container)
+                        this.userNamber--
+                        if (this.userNamber === 0) clearInterval(timerRender)
+                    }, 100)
+
+                }
+            }
+            let star = new ShiningStars(0.1, 1, userNumerStar).render(".container")
+        </script>
+
+    </body>
+
+</html>

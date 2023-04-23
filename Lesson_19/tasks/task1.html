@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 1</title>
+        <style>
+            .shop {
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                margin-left: 20px;
+                cursor: pointer;
+                margin-top: 30px;
+                row-gap: 50px;
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+
+            }
+
+            .item {
+                display: flex;
+                flex-direction: column;
+                background-color: rgba(145, 143, 131, 0.429);
+                width: 350px;
+                padding: 10px;
+                gap: 10px;
+                border-radius: 10px;
+                min-height: 100%;
+            }
+
+            .item:hover {
+                transform: scale(1.02);
+                transition: all 0.5s ease 0s;
+            }
+
+            .item__img {
+                flex-grow: 1;
+                width: 95%;
+
+            }
+
+            .item__img img {
+                max-width: 100%;
+
+            }
+
+            .item__status {
+                position: relative;
+                align-self: flex-start;
+                padding: 10px;
+                font-size: 18px;
+                font-style: italic;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+
+            .item__status:hover::before {
+                opacity: 0.7;
+                transition: all 0.3s ease 0s;
+                box-shadow: 3px 5px 5px #000;
+            }
+
+            .item__status::before {
+                position: absolute;
+                top: 0;
+                left: 0;
+                content: "";
+                background-color: orange;
+                width: 100%;
+                height: 100%;
+                z-index: -1;
+                border: 3px solid rgb(153, 5, 5);
+                border-radius: 30px;
+                box-shadow: 2px 3px 2px #000;
+            }
+
+            .item__title {
+                font-size: 16px;
+                color: rgba(204, 211, 8, 0.845);
+            }
+
+            .item__title:hover {
+                text-decoration: underline;
+            }
+
+            .item__price {
+                color: red;
+                animation-name: color;
+                animation-duration: 5s;
+                animation-iteration-count: infinite;
+                animation-timing-function: linear;
+            }
+
+            @keyframes color {
+                0% {
+                    color: red;
+                }
+
+                25% {
+                    color: green;
+                }
+
+                50% {
+                    color: blue;
+                }
+
+                75% {
+                    color: violet;
+                }
+
+                100% {
+                    color: red;
+                }
+            }
+        </style>
+    </head>
+    <script>
+        // Задача 5. Байрактар. З верхньої частини екрану у випадковій позиції по горизонталі з’являються танки, які їдуть вниз. При кліку на танк він вибухає і зникає з екрану. 
+        class Shop {
+            constructor({ labelTitle, imageSrc, linkItem, cardTitle, cardPrice }) {
+                this.labelTitle = labelTitle
+                this.imageSrc = imageSrc
+                this.linkItem = linkItem
+                this.cardTitle = cardTitle
+                this.cardPrice = cardPrice
+            }
+            focusCard() {
+                this.cardContainer.style.outline = "10px solid green"
+            }
+            render(targetSection) {
+                this.cardContainer = document.createElement("div")
+                this.cardContainer.className = "item"
+
+                this.cardContainer.onclick = this.focusCard.bind(this)
+                const label = document.createElement("span")
+                label.className = "item__status"
+                label.innerText = this.labelTitle
+
+                const imageContainer = document.createElement("div")
+                imageContainer.className = "item__img"
+                const image = document.createElement("img")
+                image.src = this.imageSrc
+                imageContainer.append(image)
+
+                const cardTitleContainer = document.createElement("a")
+                cardTitleContainer.className = "item__title"
+                cardTitleContainer.href = this.linkItem
+                cardTitleContainer.innerText = this.cardTitle
+
+                const priceContainer = document.createElement("div")
+                priceContainer.className = "item__price"
+                priceContainer.innerText = this.cardPrice
+
+                this.cardContainer.append(label)
+                this.cardContainer.append(imageContainer)
+                this.cardContainer.append(cardTitleContainer)
+                this.cardContainer.append(priceContainer)
+
+
+                const targetContainer = document.querySelector(targetSection)
+                console.log(targetContainer);
+                targetContainer.append(this.cardContainer)
+            }
+        }
+        const cardData = [
+            {
+                labelTitle: "Топ продаж",
+                imageSrc: "../img/284975235.webp",
+                linkItem: "https://rozetka.com.ua/",
+                cardTitle: "Ноутбук ASUS Vivobook 16X M1603IA-MB079 (90NB0Y41-M003M0) Quiet Blue / AMD Ryzen 5 4600H / RAM 12 ГБ / SSD 512 ГБ",
+                cardPrice: "23 999 ₴"
+            },
+            {
+                labelTitle: "Акція",
+                imageSrc: "../img/285785586.webp",
+                linkItem: "https://rozetka.com.ua/",
+                cardTitle: "Ноутбук Lenovo IdeaPad Gaming 3 15IAH7 (82S900UHRA) Onyx Grey / Intel Core i5-12450H / RAM 16 ГБ / SSD 512 ГБ / nVidia GeForce RTX 3050 Ti",
+                cardPrice: "17 340 ₴"
+            },
+            {
+                labelTitle: "Топ продаж",
+                imageSrc: "../img/290842123.webp",
+                linkItem: "https://rozetka.com.ua/",
+                cardTitle: "Ноутбук ASUS Vivobook 16X M1603IA-MB079 (90NB0Y41-M003M0) Quiet Blue / AMD Ryzen 5 4600H / RAM 12 ГБ / SSD 512 ГБ",
+                cardPrice: "15 354 ₴"
+            },
+            {
+                labelTitle: "Топ продаж",
+                imageSrc: "../img/297374146.webp",
+                linkItem: "https://rozetka.com.ua/",
+                cardTitle: "Ноутбук Acer Aspire 7 A715-42G-R0VS (NH.QBFEU.00A) Charcoal Black / AMD Ryzen 5 5500U / RAM 8 ГБ / SSD 512 ГБ / nVidia GeForce GTX 1650",
+                cardPrice: "18 439 ₴"
+            },
+            {
+                labelTitle: "Акція",
+                imageSrc: "../img/320933638.webp",
+                linkItem: "https://rozetka.com.ua/",
+                cardTitle: "Ноутбук ASUS Vivobook 16X M1603IA-MB079 (90NB0Y41-M003M0) Quiet Blue / AMD Ryzen 5 4600H / RAM 12 ГБ / SSD 512 ГБ",
+                cardPrice: "19 999 ₴"
+            },
+            {
+                labelTitle: "Топ продаж",
+                imageSrc: "../img/320954863.webp",
+                linkItem: "https://rozetka.com.ua/",
+                cardTitle: "Ноутбук ASUS Vivobook 16X M1603IA-MB079 (90NB0Y41-M003M0) Quiet Blue / AMD Ryzen 5 4600H / RAM 12 ГБ / SSD 512 ГБ",
+                cardPrice: "33 999 ₴"
+            },
+        ]
+
+        window.onload = function () {
+            for (let i = 0; i < cardData.length; i++) {
+                new Shop(cardData[i]).render(".shop")
+            }
+        }
+
+
+    </script>
+
+    <body>
+        <main>
+            <section class="shop">
+
+            </section>
+        </main>
+
+    </body>
+
+</html>

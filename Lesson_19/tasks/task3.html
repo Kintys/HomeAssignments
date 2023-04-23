@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 3</title>
+        <style>
+            .container {
+                position: relative;
+                background: url('../img/195_rrrre-1920-1.jpg') 0 0 / cover no-repeat;
+            }
+
+            .snow {
+                position: absolute;
+                transform: rotate();
+            }
+        </style>
+
+    </head>
+
+    <body>
+        <main class="container">
+
+        </main>
+    </body>
+    <script>
+        // Задача 3. Відобразити падаючий сніг. Сніжинка з’являється у верхній частині екрану і з випадковою швидкістю рухається вниз. Як тільки сніжинка досягає нижньої частини екрану вона знову повинна з’явитись у верхній частині екрану.
+
+        class Snow {
+            getRandomNumber(min, max) {
+                return min + Math.floor(Math.random() * (max - min + 1))
+            }
+            createSnowflake() {
+                let snowContainer = document.createElement("div")
+                snowContainer.className = "snow"
+                snowContainer.innerText = "*"
+                snowContainer.style.cssText =
+                    `left: ${this.getRandomNumber(1, 100)}%;
+                    top: -20px;
+                    transform: scale(${Math.floor(this.getRandomNumber(1, 4))});
+                    transition: all 0.3s ease 0s;`
+                let timerID = setInterval(() => {
+                    if (parseFloat(snowContainer.style.top) > document.documentElement.clientHeight) {
+                        snowContainer.remove()
+                    } else {
+                        snowContainer.style.top = snowContainer.offsetTop + 5 + "px"
+                    }
+                }, this.getRandomNumber(10, 50))
+                return snowContainer
+            }
+            render(targetSelector) {
+                const container = document.querySelector(targetSelector)
+                const containerHeight = container.style.height = document.documentElement.clientHeight + "px"
+                let renderTimer = setInterval(() => {
+                    container.append(this.createSnowflake(containerHeight))
+                }, this.getRandomNumber(1000, 3000))
+            }
+        }
+
+
+
+
+        let r = new Snow().render(".container")
+    </script>
+
+</html>
