@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./css/style.css">
+        <title>Завдання 2 додаткове</title>
+        <style>
+            .container {
+                width: 520px;
+                padding: 10px;
+                border: 2px solid green;
+                border-radius: 8px;
+            }
+
+            .container div {
+                height: 15px;
+            }
+
+            .item {
+                width: 500px;
+                margin-bottom: 10px;
+            }
+
+            .item-2 {
+                width: 500px;
+                margin-bottom: 10px;
+                border: 2px solid yellow;
+            }
+
+            .title {
+                width: 200px;
+                display: inline-block;
+            }
+
+            .title-2 {
+                width: 200px;
+                display: inline-block;
+                font-weight: bold;
+            }
+
+            .value-container {
+                width: 300px;
+                display: inline-block;
+            }
+        </style>
+
+    </head>
+
+    <body>
+        <div id="dataContainer"></div>
+        <script>
+            class Diagram {
+                constructor(dataList, sectionsColor) {
+                    this.dataList = dataList
+                    this.sectionsColor = sectionsColor
+                }
+                getValueColor(value) {
+                    const sectionLength = 100 / this.sectionsColor.length
+                    const sectionNumber = Math.ceil(value / sectionLength)
+                    return this.sectionsColor[sectionNumber - 1]
+                }
+                createHTMLElement({ title, value }) {
+                    const containerDiv = document.createElement("div")
+                    containerDiv.classList.add("item")
+
+                    const titleContainer = document.createElement("div")
+                    titleContainer.innerHTML = title
+                    titleContainer.className = "title"
+                    containerDiv.append(titleContainer)
+
+                    const valueContainer = document.createElement("div")
+                    valueContainer.classList.add("value-container")
+
+                    const valueDiv = document.createElement("div")
+                    valueDiv.style.width = `${value}%`
+                    valueDiv.style.backgroundColor = this.getValueColor(value)
+
+                    valueContainer.append(valueDiv)
+                    containerDiv.append(valueContainer)
+
+                    return containerDiv
+                }
+                render(targetSelector) {
+                    const diagramContainer = document.createElement("div")
+                    diagramContainer.className = "container"
+                    this.dataList.forEach(el => {
+                        const itemElement = this.createHTMLElement(el)
+                        diagramContainer.append(itemElement)
+                    });
+
+                    document.querySelector(targetSelector).append(diagramContainer)
+                }
+            }
+            let sectionsColor = ["red", "blue", "yellow", "green"]
+            let dataList = [
+                {
+                    title: 'Ivan',
+                    value: 39,
+                },
+                {
+                    title: 'Petrov',
+                    value: 54,
+                },
+                {
+                    title: 'Olga',
+                    value: 87,
+                },
+                {
+                    title: 'Vlad',
+                    value: 14,
+                },
+            ]
+            let test = new Diagram(dataList, sectionsColor)
+            test.render("#dataContainer")
+        </script>
+    </body>
+
+</html>
