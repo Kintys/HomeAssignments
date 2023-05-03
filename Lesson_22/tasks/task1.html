@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 1</title>
+        <style>
+        </style>
+    </head>
+
+    <body>
+        <main>
+            <section class="bank">
+
+            </section>
+        </main>
+
+    </body>
+    <script>
+        // Створити клас Client
+        // Властивості : ID ПІБ Кількість грошей на рахунку
+        // Методи: Додавання грошей Зняття грошей ToString
+        // На основі цього класу створити клас GoldenClient
+        //  Властивості: ID ПІБ Кількість грошей на рахунку
+        //  Ліміт кредитних коштів Відсоток за використання
+        //  кредитних коштів Методи: Додавання грошей Зняття
+        //  грошей Визначення пені за використання кредитних
+        //  коштів ToString Створити клас Bank, у якому
+        //   зберігається масив клієнтів. Виконати такі операції:
+        //  Вивести усіх простих клієнтів;
+        //  Вивести усіх клієнтів GoldenClient;
+        //  Знати сумарну кількість грошей на рахунку;
+
+        class CreateElement {
+            static createHTMLElement({ tag, attrs, props, events }) {
+                const el = document.createElement(tag)
+                if (attrs) {
+                    for (const attrKey in attrs) {
+                        el.setAttribute(attrKey, attrs[attrKey])
+                    }
+                }
+                if (props) {
+                    for (const propKey in props) {
+                        el[propKey] = props[propKey]
+                    }
+                }
+                if (events) {
+                    for (const eventType in events) {
+                        el.addEventListener(eventType, events[eventType])
+                    }
+                }
+                return el
+            }
+            static createLabelWithInput({ labelOptions, inputOptions }) {
+                const input = CreateElement.createHTMLElement({
+                    tag: input,
+                    ...inputOptions ?? {}
+                })
+                const label = CreateElement.createHTMLElement({
+                    tag: label,
+                    ...inputOptions ?? {}
+                })
+                label.append(input)
+            }
+        }
+        class Client {
+            constructor({ id, name, balance }) {
+                this.id = id
+                this.name = name
+                this.balance = balance
+            }
+            addMoney(userMoney) {
+                this.balance += userMoney
+            }
+            withdrawalMoney(userMoney) {
+                if (this.balance >= userMoney) {
+                    this.balance -= userMoney
+                    return userMoney
+                }
+                return false
+            }
+            toString() {
+                return `Ід ${this.id} Ім'я ${this.name} Кошти на рахунку ${this.balance}`
+            }
+        }
+        class GoldenClient extends Client {
+            constructor(clientData, creditLimit, interestCredit) {
+
+                super(clientData)
+
+                this.creditLimit = creditLimit
+                this.interestCredit = interestCredit
+            }
+            penaltyForUseCredit(userDay) {
+                return this.balance * this.interestCredit * userDay / 365
+            }
+            toString() {
+                return `Ід ${this.id} Ім'я ${this.name} Кошти на рахунку ${this.balance} ліміт ${this.creditLimit} відсоток  ${this.interestCredit} `
+            }
+        }
+        class Bank {
+            constructor(clientList) {
+                this.clientList = [...clientList]
+            }
+
+            getOrdinaryCustomers() {
+                return this.clientList.filter((client) => !client.creditLimit)
+            }
+            getVipCustomers() {
+                return this.clientList.filter((client) => client.creditLimit)
+            }
+            getTotalBankSum() {
+                return this.clientList.reduce((prev, sum, index) => {
+                    return prev += sum.balance
+                }, 0)
+            }
+            render(targetSection) {
+                const olClient = CreateElement.createHTMLElement({ tag: "ol" })
+                const titleList = CreateElement.createHTMLElement({
+                    tag: "h3",
+                    props: {
+                        innerText: "Список звичайних клієнтів"
+                    }
+                })
+                const clientList = this.getOrdinaryCustomers()
+
+                for (const client of clientList) {
+                    let li = document.createElement("li")
+                    li.innerHTML = client
+                    olClient.append(li)
+                }
+
+                const br = CreateElement.createHTMLElement({ tag: "br" })
+
+                const targetContainer = document.querySelector(targetSection)
+                targetContainer.append(olClient)
+                targetContainer.append(br)
+                olClient.before(titleList)
+
+                const olGoldClient = CreateElement.createHTMLElement({ tag: "ol" })
+                const titleGold = CreateElement.createHTMLElement({
+                    tag: "h3",
+                    props: {
+                        innerText: "Список VIP клієнтів"
+                    }
+                })
+                const goldList = this.getVipCustomers()
+                for (const vip of goldList) {
+                    const li = document.createElement("li")
+                    li.innerHTML = vip
+                    olGoldClient.append(li)
+                }
+                targetContainer.append(olGoldClient)
+                olGoldClient.before(titleGold)
+
+                const totalSum = CreateElement.createHTMLElement({
+                    tag: "div",
+                    props: {
+                        innerHTML: `Загальна кількість коштів в банку  = ${this.getTotalBankSum()}`
+                    }
+                })
+                targetContainer.append(totalSum)
+            }
+        }
+
+        let clientList = [
+            new GoldenClient({ id: 14415, name: "Іваненко Надія Петрівна", balance: 349000, }, 60000, 0.2),
+            new Client({ id: 5151, name: "Лисенко Максим Ігорович", balance: 34140, }),
+            new GoldenClient({ id: 645, name: "Кравченко Олексій Сергійович", balance: 13041, }, 60000, 0.2),
+            new Client({ id: 656, name: "Мельник Оксана Вікторівна", balance: 51514, }),
+            new GoldenClient({ id: 1313, name: "Гриценко Тетяна Олександрівна", balance: 544144, }, 60000, 0.7),
+            new Client({ id: 656, name: "Петренко Віталій Васильович", balance: 75141, }),
+            new Client({ id: 6767, name: "Гончаренко Юлія Анатоліївна", balance: 14400, }),
+        ]
+        let bank = new Bank(clientList)
+        bank.render(".bank")
+    </script>
+
+
+</html>

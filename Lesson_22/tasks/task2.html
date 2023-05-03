@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Завдання 2</title>
+        <style>
+            .yard {
+                position: relative;
+
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <main class="yard">
+        </main>
+        <script>
+            // Розробити Класи. Подумайте яким має бути спільний клас предок.
+
+            // House
+            // --- властивості ---
+            // - Координата Х
+            // - Координата У
+            // - шлях до зображення
+            // - інтервал оновлення
+            // --- методи ---
+            // - генерування елемента розмітки
+            // - оновлення через вказаний інтервал
+            //(збільшення або зменшення масштабу (об’єкт не рухається)
+
+            // Dog
+            // --- властивості ---
+            // - Координата Х
+            // - Координата У
+            // - шлях до зображення
+            // - інтервал оновлення
+            // --- методи ---
+            // - генерування елемента розмітки
+            // - оновлення через вказаний інтервал
+            //(випадкове зміщення по горизонталі(зміна координати Х))
+            //
+
+            // Bird
+            // --- властивості ---
+            // Координата Х
+            // Координата У
+            // шлях до зображення
+            // інтервал оновлення
+            // --- методи ---
+            // генерування елемента розмітки
+            // оновлення через вказаний інтервал
+            //(випадкове переміщення у довільному напрямку)
+
+
+            class ImageObj {
+                constructor({ coordinat_X, coordinat_Y, imageSrc, timer }) {
+                    this.coordinat_X = coordinat_X
+                    this.coordinat_Y = coordinat_Y
+                    this.imageSrc = imageSrc
+                    this.timer = timer
+                }
+                getRandomNumber(min, max) {
+                    return min + Math.floor(Math.random() * (max + min - 1))
+                }
+                createImage() {
+                    const image = document.createElement("img")
+                    image.src = this.imageSrc
+                    image.style.cssText = `
+                position: absolute;
+                top: ${this.coordinat_Y}px;
+                left: ${this.coordinat_X}px;
+                width: 50px;
+                height: 50px;`
+                    return image
+                }
+            }
+            class House extends ImageObj {
+                constructor(obj) {
+                    super(obj)
+                    this.image = super.createImage()
+                }
+                scalingImage(targetSection) {
+                    document.querySelector(targetSection).append(this.image)
+                    let timerScaling = setInterval(() => {
+                        this.image.style.transform = `scale(${super.getRandomNumber(2, 5)})`
+                    }, this.timer * 100)
+                }
+            }
+            class Dog extends ImageObj {
+                constructor(obj) {
+                    super(obj)
+
+                    this.image = super.createImage()
+                }
+                ranDog(targetSection) {
+                    document.querySelector(targetSection).append(this.image)
+                    let ran = setInterval(() => {
+                        this.image.style.left = super.getRandomNumber(1, 99) + "%"
+                    }, this.timer * 500)
+                }
+            }
+            class Bird extends ImageObj {
+                constructor(obj) {
+                    super(obj)
+
+                    this.image = super.createImage()
+                }
+                flyBird(targetSection) {
+                    document.querySelector(targetSection).append(this.image)
+                    setInterval(() => {
+                        this.image.style.top = super.getRandomNumber(1, 300) + "px"
+                        this.image.style.left = super.getRandomNumber(1, 99) + "%"
+                    }, this.timer * 1000)
+                }
+            }
+            const house = {
+                coordinat_X: 600,
+                coordinat_Y: 200,
+                imageSrc: "../img/building-your-own-house-points-to-ponder.webp",
+                timer: 7
+            }
+            const dog = {
+                coordinat_X: 50,
+                coordinat_Y: 400,
+                imageSrc: "../img/dog.webp",
+                timer: 2
+            }
+            const bird = {
+                coordinat_X: 300,
+                coordinat_Y: 70,
+                imageSrc: "../img/Bird.webp",
+                timer: 1
+            }
+            let r = new House(house).scalingImage(".yard")
+            let d = new Dog(dog).ranDog(".yard")
+            let b = new Bird(bird).flyBird(".yard")
+        </script>
+    </body>
+
+</html>
